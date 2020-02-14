@@ -2,10 +2,15 @@
   "name": "napper-todolist",
   "version": "0.1.0",
   "description": "React todo list component",
-  "main": "index.js",
   "author": "sixertoy <sixertoy.github@gmail.com>",
-  "license": "MIT",
+  "license": "ISC",
   "private": true,
+  "main": "dist/bundle.min.js",
+  "module": "lib/index.jsx",
+  "files": [
+    "./lib",
+    "./dist"
+  ],
   "homepage": "https://github.com/sixertoy/napper-todolist",
   "repository": {
     "type": "git",
@@ -27,38 +32,23 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "docsify": "4.9.4",
-    "eslint-config-airbnb": "18.0.1",
-    "eslint-config-prettier": "6.2.0",
-    "eslint-plugin-import": "2.18.2",
-    "eslint-plugin-simple-import-sort": "4.0.0",
-    "eslint-plugin-sort-destructure-keys": "1.3.3",
-    "eslint-plugin-sort-keys-fix": "1.0.1",
-    "husky": "3.0.0",
-    "lint-staged": "9.1.0",
-    "prettier": "^1.19.1",
-    "prettier-eslint": "9.0.0",
-    "prettier-stylelint": "0.4.2",
-    "pretty-quick": "^2.0.1",
-    "stylelint": "10.1.0",
-    "stylelint-config-standard": "18.3.0",
-    "stylelint-order": "3.0.0",
-    "stylelint-scss": "3.9.1"
+  "engines": {
+    "node": "^10.6.0 || ^12.13.1"
   },
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
+  "devDependencies": {},
+  "peerDependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-jss": "^10.0.4"
   },
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  },
   "scripts": {
     "cleanup": "rm -rf node_modules && rm yarn.lock",
     "test": "",
     "lint": "eslint ./src/**/*.{js,jsx,json}",
-    "build": ""
+    "build": "rollup -c --silent"
   }
 }
