@@ -15,6 +15,7 @@ const NapperTodoList = props => {
   return (
     <JssProvider classNamePrefix={CLASS_NAME_PREFIX} id={{ minify }} jss={jss}>
       <ThemeProvider theme={mergedTheme}>
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <NapperTodoListComponent {...rest} />
       </ThemeProvider>
     </JssProvider>
