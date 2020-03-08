@@ -47,7 +47,7 @@ const NapperTodoListComponent = React.memo(
     counterPosition,
     onChange,
     onDelete,
-    onToggle,
+    onToggleAll,
     order,
     orderBy,
     showCompleted,
@@ -76,10 +76,10 @@ const NapperTodoListComponent = React.memo(
             tasks={tasks}
             title={title}
           />
-          {onToggle && (
+          {onToggleAll && (
             <NapperTodoListCheckerComponent
               allChecked={allChecked}
-              onChange={onToggle}
+              onChange={onToggleAll}
             />
           )}
           <NapperTodoListWrapperComponent
@@ -102,7 +102,7 @@ NapperTodoListComponent.defaultProps = {
   completedAtBottom: true,
   counterPosition: 'bottom',
   onDelete: false,
-  onToggle: false,
+  onToggleAll: false,
   order: false,
   orderBy: 'label',
   showCompleted: false,
@@ -117,7 +117,7 @@ NapperTodoListComponent.propTypes = {
   counterPosition: PlacementType,
   onChange: PropTypes.func.isRequired,
   onDelete: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-  onToggle: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  onToggleAll: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   order: PropTypes.oneOf([false, 'desc', 'asc']),
   orderBy: PropTypes.oneOf(['label', 'id', 'mtime', 'ctime']),
   showCompleted: PropTypes.bool,
