@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { jss, JssProvider, ThemeProvider } from 'react-jss';
 
-import NapperTodoListComponent from './component';
 import { BASE_THEME, CLASS_NAME_PREFIX, MINIFY } from './core/constants';
 import { ThemeType } from './core/prop-types';
+import NapperTodoListComponent from './todolist';
 
 const NapperTodoList = props => {
   const { jssMinifyId, theme, ...rest } = props;
