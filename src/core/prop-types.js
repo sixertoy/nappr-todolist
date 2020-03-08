@@ -27,7 +27,7 @@ export const IconType = shape({
 
 export const TaskType = shape({
   checked: bool.isRequired,
-  id: string.isRequired,
+  id: oneOfType([string, bool]).isRequired,
   label: string.isRequired,
 });
 
