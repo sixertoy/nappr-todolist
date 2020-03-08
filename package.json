@@ -6,7 +6,7 @@
   "license": "ISC",
   "private": true,
   "main": "dist/bundle.min.js",
-  "module": "lib/index.jsx",
+  "module": "lib/index.js",
   "files": [
     "./lib",
     "./dist"
