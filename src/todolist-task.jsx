@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
@@ -10,7 +11,7 @@ import {
 import { IconType } from './core/prop-types';
 
 const useStyles = createUseStyles({
-  button: ({ theme }) => ({
+  btn: ({ theme }) => ({
     alignItems: 'flex-start',
     color: theme.color,
     display: 'flex',
@@ -18,17 +19,17 @@ const useStyles = createUseStyles({
     flexDirection: 'row',
     fontSize: '1rem',
   }),
-  checkbox: {
+  ckb: {
     marginRight: 3,
     paddingTop: '0.2rem',
   },
-  delete: {
+  dlt: {
     flex: '0 1',
     fontSize: '1.2rem',
     marginLeft: 6,
     marginRight: 12,
   },
-  label: {
+  lbl: {
     fontSize: '1rem',
     lineHeight: '1.3rem',
   },
@@ -60,25 +61,25 @@ const NapperTodoListTaskComponent = ({
   const canDelete = isHover && onDelete;
   return (
     <div
-      className={classes.task}
+      className={classnames('napper-todolist-task', classes.task)}
       data-id={`napper-todolist-task-${id}`}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}>
       <button
-        className={classes.button}
+        className={classnames('napper-todolist-task-btn', classes.btn)}
         type="button"
         onClick={() => onChange(id, !checked)}>
-        <div className={classes.checkbox}>
+        <div className={classnames('napper-todolist-task-ckb', classes.ckb)}>
           {checked && Icons.Checked}
           {!checked && Icons.Unchecked}
         </div>
-        <div className={classes.label}>
+        <div className={classnames('napper-todolist-task-lbl', classes.lbl)}>
           <span>{label}</span>
         </div>
       </button>
       {canDelete && (
         <button
-          className={classes.delete}
+          className={classnames('napper-todolist-task-dlt', classes.dlt)}
           type="button"
           onClick={() => onDelete(id)}>
           <NapperTodoListIconTrash />

@@ -1,27 +1,29 @@
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 
+import { CLASS_NAME_PREFIX } from './core/constants';
 import { TasksType, TitleType } from './core/prop-types';
 import NapperTodoListCounterComponent from './todolist-counter';
 import NapperTodoListProgressComponent from './todolist-progress';
 
+const BASE_CLASS = `${CLASS_NAME_PREFIX}-header`;
+
 const useStyles = createUseStyles({
-  bottom: {},
-  header: {
+  btm: {},
+  container: {
     display: 'flex',
     flex: '0 1',
     flexDirection: 'column',
     paddingBottom: 12,
   },
-  title: ({ theme }) => ({
+  tit: ({ theme }) => ({
     color: theme.color,
     fontSize: theme.titleFontSize,
   }),
-  wrapper: {
-    '& + div': {
-      marginTop: 5,
-    },
+  wrp: {
+    '& + div': { marginTop: 5 },
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'row',
@@ -34,13 +36,17 @@ const NapperTodoListHeaderComponent = React.memo(
     const theme = useTheme();
     const classes = useStyles({ theme });
     return (
-      <div className={classes.header}>
-        <div className={classes.wrapper}>
-          {title && <span className={classes.title}>{title}</span>}
+      <div className={classnames(BASE_CLASS, classes.container)}>
+        <div className={classnames(`${BASE_CLASS}-wrp`, classes.wrp)}>
+          {title && (
+            <span className={classnames(`${BASE_CLASS}-tit`, classes.tit)}>
+              {title}
+            </span>
+          )}
           {showCounter && <NapperTodoListCounterComponent tasks={tasks} />}
         </div>
         {showProgress && (
-          <div className={classes.bottom}>
+          <div className={classnames(`${BASE_CLASS}-btm`, classes.btm)}>
             <NapperTodoListProgressComponent tasks={tasks} />
           </div>
         )}

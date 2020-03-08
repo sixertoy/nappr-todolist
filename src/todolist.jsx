@@ -45,6 +45,7 @@ const NapperTodoListComponent = React.memo(
   ({
     completedAtBottom,
     counterPosition,
+    id,
     onChange,
     onDelete,
     onToggleAll,
@@ -67,8 +68,11 @@ const NapperTodoListComponent = React.memo(
     const progressOnTop = showTopProgress(counterPosition, showProgress);
     const counterOnBottom = showBottomCounter(counterPosition, showCounter);
     const progressOnBottom = showBottomProgress(counterPosition, showProgress);
+    const containerProps = {};
+    if (id) containerProps.id = id;
     return (
-      <div className={classes.tasks}>
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      <div {...containerProps} className={classes.tasks}>
         <div className={classes.container}>
           <NapperTodoListHeaderComponent
             showCounter={counterOnTop}
@@ -101,6 +105,7 @@ const NapperTodoListComponent = React.memo(
 NapperTodoListComponent.defaultProps = {
   completedAtBottom: true,
   counterPosition: 'bottom',
+  id: false,
   onDelete: false,
   onToggleAll: false,
   order: false,
@@ -115,6 +120,7 @@ NapperTodoListComponent.defaultProps = {
 NapperTodoListComponent.propTypes = {
   completedAtBottom: PropTypes.bool,
   counterPosition: PlacementType,
+  id: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   onChange: PropTypes.func.isRequired,
   onDelete: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   onToggleAll: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
