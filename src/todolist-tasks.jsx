@@ -1,17 +1,21 @@
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 
+import { CLASS_NAME_PREFIX } from './core/constants';
 import { TasksType } from './core/prop-types';
 import NapperTodoListTaskComponent from './todolist-task';
 
+const BASE_CLASS = `${CLASS_NAME_PREFIX}-tasks`;
+
 const useStyles = createUseStyles({
-  tasks: {
+  container: {
     display: 'flex',
     flex: 1,
     position: 'relative',
   },
-  wrapper: {
+  wrp: {
     bottom: 0,
     left: 0,
     overflowX: 'hidden',
@@ -35,7 +39,7 @@ function renderTaskItem(obj, onChange, onDelete) {
   );
 }
 
-const NapperTodoListWrapperComponent = ({
+const NapperTodoListTasksComponent = ({
   onChange,
   onDelete,
   render,
@@ -43,23 +47,23 @@ const NapperTodoListWrapperComponent = ({
 }) => {
   const classes = useStyles();
   return (
-    <div className={classes.tasks}>
-      <div className={classes.wrapper}>
+    <div className={classnames(BASE_CLASS, classes.container)}>
+      <div className={classnames(`${BASE_CLASS}-wrp`, classes.wrp)}>
         {tasks.map(obj => render(obj, onChange, onDelete))}
       </div>
     </div>
   );
 };
 
-NapperTodoListWrapperComponent.defaultProps = {
+NapperTodoListTasksComponent.defaultProps = {
   render: renderTaskItem,
 };
 
-NapperTodoListWrapperComponent.propTypes = {
+NapperTodoListTasksComponent.propTypes = {
   onChange: PropTypes.func.isRequired,
   onDelete: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]).isRequired,
   render: PropTypes.func,
   tasks: TasksType.isRequired,
 };
 
-export default NapperTodoListWrapperComponent;
+export default NapperTodoListTasksComponent;

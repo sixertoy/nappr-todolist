@@ -1,7 +1,9 @@
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 
+import { CLASS_NAME_PREFIX } from './core/constants';
 import { compose, noop } from './core/fp';
 import { PlacementType, TasksType, TitleType } from './core/prop-types';
 import {
@@ -17,22 +19,24 @@ import {
 import NapperTodoListCheckerComponent from './todolist-checker';
 import NapperTodoListFooterComponent from './todolist-footer';
 import NapperTodoListHeaderComponent from './todolist-header';
-import NapperTodoListWrapperComponent from './todolist-wrapper';
+import NapperTodoListTasksComponent from './todolist-tasks';
+
+const BASE_CLASS = `${CLASS_NAME_PREFIX}-container`;
 
 const useStyles = createUseStyles({
   container: {
-    display: 'flex',
-    flexDirection: 'column',
     height: '100%',
-    justifyContent: 'flex-start',
     maxHeight: '100%',
     maxWidth: '100%',
     minHeight: '100%',
     minWidth: '100%',
     width: '100%',
   },
-  tasks: {
+  wrp: {
+    display: 'flex',
+    flexDirection: 'column',
     height: '100%',
+    justifyContent: 'flex-start',
     maxHeight: '100%',
     maxWidth: '100%',
     minHeight: '100%',
@@ -71,9 +75,11 @@ const NapperTodoListComponent = React.memo(
     const containerProps = {};
     if (id) containerProps.id = id;
     return (
-      // eslint-disable-next-line react/jsx-props-no-spreading
-      <div {...containerProps} className={classes.tasks}>
-        <div className={classes.container}>
+      <div
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...containerProps}
+        className={classnames(BASE_CLASS, classes.container)}>
+        <div className={classnames(`${BASE_CLASS}-wrp`, classes.wrp)}>
           <NapperTodoListHeaderComponent
             showCounter={counterOnTop}
             showProgress={progressOnTop}
@@ -86,7 +92,7 @@ const NapperTodoListComponent = React.memo(
               onChange={onToggleAll}
             />
           )}
-          <NapperTodoListWrapperComponent
+          <NapperTodoListTasksComponent
             tasks={filtered}
             onChange={onChange}
             onDelete={onDelete}

@@ -8,7 +8,10 @@ import {
   NapperTodoListIconTrash,
   NapperTodoListIconUnchecked,
 } from './assets';
+import { CLASS_NAME_PREFIX } from './core/constants';
 import { IconType } from './core/prop-types';
+
+const BASE_CLASS = `${CLASS_NAME_PREFIX}-task`;
 
 const useStyles = createUseStyles({
   btn: ({ theme }) => ({
@@ -61,25 +64,25 @@ const NapperTodoListTaskComponent = ({
   const canDelete = isHover && onDelete;
   return (
     <div
-      className={classnames('napper-todolist-task', classes.task)}
+      className={classnames(BASE_CLASS, classes.task)}
       data-id={`napper-todolist-task-${id}`}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}>
       <button
-        className={classnames('napper-todolist-task-btn', classes.btn)}
+        className={classnames(`${BASE_CLASS}-btn`, classes.btn)}
         type="button"
         onClick={() => onChange(id, !checked)}>
-        <div className={classnames('napper-todolist-task-ckb', classes.ckb)}>
+        <div className={classnames(`${BASE_CLASS}-ckb`, classes.ckb)}>
           {checked && Icons.Checked}
           {!checked && Icons.Unchecked}
         </div>
-        <div className={classnames('napper-todolist-task-lbl', classes.lbl)}>
+        <div className={classnames(`${BASE_CLASS}-lbl`, classes.lbl)}>
           <span>{label}</span>
         </div>
       </button>
       {canDelete && (
         <button
-          className={classnames('napper-todolist-task-dlt', classes.dlt)}
+          className={classnames(`${BASE_CLASS}-dlt`, classes.dlt)}
           type="button"
           onClick={() => onDelete(id)}>
           <NapperTodoListIconTrash />

@@ -1,4 +1,4 @@
-export const CLASS_NAME_PREFIX = 'napper-todolist-';
+export const CLASS_NAME_PREFIX = 'napper-todolist';
 
 export const BASE_THEME = {
   backgroundHover: 'rgba(0, 0, 0, 0.15)',

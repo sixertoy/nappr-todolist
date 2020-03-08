@@ -73,3 +73,18 @@ const Application = ({ todos }) => {
   titleFontSize: 20,
 };
 ```
+
+## CSS Map
+
+```sacss
+.napper-todolist {
+  .napper-todolist-checker {}
+  .napper-todolist-counter {}
+  .napper-todolist-footer {}
+  .napper-todolist-header {}
+  .napper-todolist-progress {}
+  .napper-todolist-task {}
+  .napper-todolist-tasks {}
+  .napper-todolist-wrapper {}
+}
+```

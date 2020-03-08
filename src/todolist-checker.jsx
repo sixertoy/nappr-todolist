@@ -30,7 +30,7 @@ const NapperTodoListCheckerComponent = ({ allChecked, onChange }) => {
     if (needUpdate) setChecked(allChecked);
   }, [allChecked, checked]);
   return (
-    <div className={classnames(`${BASE_CLASS}`, classes.container)}>
+    <div className={classnames(BASE_CLASS, classes.container)}>
       <button
         className={classnames(`${BASE_CLASS}-btn`, classes.btn)}
         type="button"

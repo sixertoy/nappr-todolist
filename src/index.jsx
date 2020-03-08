@@ -8,12 +8,14 @@ import { BASE_THEME, CLASS_NAME_PREFIX } from './core/constants';
 import { ThemeType } from './core/prop-types';
 import NapperTodoListComponent from './todolist';
 
+const JSS_CLASSNAME_PREFIX = `${CLASS_NAME_PREFIX}-`;
+
 const NapperTodoList = props => {
   const { jssMinifyId, theme, ...rest } = props;
   const mergedTheme = { ...BASE_THEME, ...theme };
   return (
     <JssProvider
-      classNamePrefix={CLASS_NAME_PREFIX}
+      classNamePrefix={JSS_CLASSNAME_PREFIX}
       id={{ minify: jssMinifyId }}
       jss={jss}>
       <ThemeProvider theme={mergedTheme}>

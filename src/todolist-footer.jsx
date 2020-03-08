@@ -29,8 +29,8 @@ const NapperTodoListFooterComponent = React.memo(
   ({ showCounter, showProgress, tasks }) => {
     const classes = useStyles();
     return (
-      <div className={classnames(`${BASE_CLASS}-footer`, classes.container)}>
-        <div className={classnames(`${BASE_CLASS}-footer-wrp`, classes.wrp)}>
+      <div className={classnames(BASE_CLASS, classes.container)}>
+        <div className={classnames(`${BASE_CLASS}-wrp`, classes.wrp)}>
           {showProgress && <NapperTodoListProgressComponent tasks={tasks} />}
           {showCounter && <NapperTodoListCounterComponent tasks={tasks} />}
         </div>
