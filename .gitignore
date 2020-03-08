@@ -200,6 +200,6 @@ $RECYCLE.BIN/
 
 # Local Netlify folder
 .netlify
-list
+lib
 build
 config.build.json
