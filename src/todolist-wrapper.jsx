@@ -13,7 +13,7 @@ const useStyles = createUseStyles({
   },
   wrapper: {
     bottom: 0,
-    composes: ['napper-fancy-scollbar'],
+    // composes: ['napper-fancy-scollbar'],
     left: 0,
     overflowX: 'hidden',
     overflowY: 'auto',
