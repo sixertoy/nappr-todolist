@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { FaPlusSquare } from 'react-icons/fa';
 import { createUseStyles, useTheme } from 'react-jss';
 
 import { CLASS_NAME_PREFIX } from './core/constants';
@@ -32,12 +33,17 @@ const useStyles = createUseStyles({
 });
 
 const NapperTodoListHeaderComponent = React.memo(
-  ({ showCounter, showProgress, tasks, title }) => {
+  ({ createHandler, showCounter, showProgress, tasks, title }) => {
     const theme = useTheme();
     const classes = useStyles({ theme });
     return (
       <div className={classnames(BASE_CLASS, classes.container)}>
         <div className={classnames(`${BASE_CLASS}-wrp`, classes.wrp)}>
+          {createHandler && (
+            <button type="button" onClick={createHandler}>
+              <FaPlusSquare />
+            </button>
+          )}
           {title && (
             <span className={classnames(`${BASE_CLASS}-tit`, classes.tit)}>
               {title}
@@ -55,7 +61,12 @@ const NapperTodoListHeaderComponent = React.memo(
   }
 );
 
+NapperTodoListHeaderComponent.defaultProps = {
+  createHandler: null,
+};
+
 NapperTodoListHeaderComponent.propTypes = {
+  createHandler: PropTypes.func,
   showCounter: PropTypes.bool.isRequired,
   showProgress: PropTypes.bool.isRequired,
   tasks: TasksType.isRequired,

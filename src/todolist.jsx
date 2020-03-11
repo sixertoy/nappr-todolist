@@ -51,6 +51,7 @@ const NapperTodoListComponent = React.memo(
     counterPosition,
     id,
     onChange,
+    onCreateClick,
     onDelete,
     onToggleAll,
     order,
@@ -82,6 +83,7 @@ const NapperTodoListComponent = React.memo(
         <div className={classnames(`${BASE_CLASS}-wrp`, classes.wrp)}>
           <NapperTodoListHeaderComponent
             showCounter={counterOnTop}
+            createHandler={() => onCreateClick(id)}
             showProgress={progressOnTop}
             tasks={tasks}
             title={title}
@@ -128,6 +130,7 @@ NapperTodoListComponent.propTypes = {
   counterPosition: PlacementType,
   id: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   onChange: PropTypes.func.isRequired,
+  onCreateClick: PropTypes.func.isRequired,
   onDelete: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   onToggleAll: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   order: PropTypes.oneOf([false, 'desc', 'asc']),
