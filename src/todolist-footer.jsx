@@ -4,7 +4,7 @@ import React from 'react';
 import { createUseStyles } from 'react-jss';
 
 import { CLASS_NAME_PREFIX } from './core/constants';
-import { TasksType } from './core/prop-types';
+import { TasksType } from './prop-types';
 import NapperTodoListCounterComponent from './todolist-counter';
 import NapperTodoListProgressComponent from './todolist-progress';
 

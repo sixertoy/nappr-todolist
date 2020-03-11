@@ -9,7 +9,7 @@ import {
   NapperTodoListIconUnchecked,
 } from './assets';
 import { CLASS_NAME_PREFIX } from './core/constants';
-import { IconType } from './core/prop-types';
+import { IconType } from './prop-types';
 
 const BASE_CLASS = `${CLASS_NAME_PREFIX}-task`;
 

@@ -5,7 +5,6 @@ import { createUseStyles } from 'react-jss';
 
 import { CLASS_NAME_PREFIX } from './core/constants';
 import { compose, noop } from './core/fp';
-import { PlacementType, TasksType, TitleType } from './core/prop-types';
 import {
   checkAllAreCompleted,
   filterCompletedTasks,
@@ -16,6 +15,7 @@ import {
   showTopCounter,
   showTopProgress,
 } from './core/utils';
+import { PlacementType, TasksType, TitleType } from './prop-types';
 import NapperTodoListCheckerComponent from './todolist-checker';
 import NapperTodoListFooterComponent from './todolist-footer';
 import NapperTodoListHeaderComponent from './todolist-header';

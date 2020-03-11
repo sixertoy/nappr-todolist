@@ -5,7 +5,7 @@ import React from 'react';
 import { jss, JssProvider, ThemeProvider } from 'react-jss';
 
 import { BASE_THEME, CLASS_NAME_PREFIX } from './core/constants';
-import { ThemeType } from './core/prop-types';
+import { ThemeType } from './prop-types';
 import NapperTodoListComponent from './todolist';
 
 const JSS_CLASSNAME_PREFIX = `${CLASS_NAME_PREFIX}-`;
