@@ -6,6 +6,11 @@
 yarn add https://github.com/sixertoy/napper-todolist
 ```
 
+## Dependencies
+
+- [react-jss](https://www.npmjs.com/package/react-jss)
+- [classnames](https://www.npmjs.com/package/classnames)
+
 ## Usage
 
 ```javascript
