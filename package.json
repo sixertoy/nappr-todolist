@@ -1,6 +1,6 @@
 {
-  "name": "@iziges/napper-todolist",
-  "version": "0.1.7",
+  "name": "napper-todolist",
+  "version": "0.1.8",
   "description": "React todo list component",
   "author": "sixertoy <sixertoy.github@gmail.com>",
   "license": "ISC",
