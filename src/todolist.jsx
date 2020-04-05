@@ -82,8 +82,9 @@ const NapperTodoListComponent = React.memo(
         className={classnames(BASE_CLASS, classes.container)}>
         <div className={classnames(`${BASE_CLASS}-wrp`, classes.wrp)}>
           <NapperTodoListHeaderComponent
+            parentId={id}
             showCounter={counterOnTop}
-            createHandler={() => onCreateClick(id)}
+            createHandler={onCreateClick || null}
             showProgress={progressOnTop}
             tasks={tasks}
             title={title}

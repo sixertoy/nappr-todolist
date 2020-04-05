@@ -33,14 +33,14 @@ const useStyles = createUseStyles({
 });
 
 const NapperTodoListHeaderComponent = React.memo(
-  ({ createHandler, showCounter, showProgress, tasks, title }) => {
+  ({ createHandler, parentId, showCounter, showProgress, tasks, title }) => {
     const theme = useTheme();
     const classes = useStyles({ theme });
     return (
       <div className={classnames(BASE_CLASS, classes.container)}>
         <div className={classnames(`${BASE_CLASS}-wrp`, classes.wrp)}>
           {createHandler && (
-            <button type="button" onClick={createHandler}>
+            <button type="button" onClick={() => createHandler(parentId)}>
               <NapperTodoListIconPlus />
             </button>
           )}
@@ -63,10 +63,12 @@ const NapperTodoListHeaderComponent = React.memo(
 
 NapperTodoListHeaderComponent.defaultProps = {
   createHandler: null,
+  parentId: null,
 };
 
 NapperTodoListHeaderComponent.propTypes = {
   createHandler: PropTypes.func,
+  parentId: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   showCounter: PropTypes.bool.isRequired,
   showProgress: PropTypes.bool.isRequired,
   tasks: TasksType.isRequired,
