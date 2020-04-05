@@ -95,7 +95,6 @@
     "prebuild": "rm -rf dist && npm run lint",
     "build": "rollup -c --silent",
     "dev": "rollup -c --watch",
-    "docs": "docsify serve ./docs --port=2999 --no-open",
-    "prepublishOnly": "rollup -c --silent"
+    "docs": "docsify serve ./docs --port=2999 --no-open"
   }
 }
