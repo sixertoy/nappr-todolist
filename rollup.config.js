@@ -17,12 +17,12 @@ const output = [
   {
     file: main,
     format: 'cjs',
-    sourcemap: false,
+    sourcemap: true,
   },
   {
     file: module,
     format: 'es',
-    sourcemap: false,
+    sourcemap: true,
   },
 ];
 
