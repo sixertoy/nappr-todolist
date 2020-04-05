@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
@@ -17,6 +16,8 @@ const useStyles = createUseStyles({
   },
   wrp: {
     bottom: 0,
+    display: 'flex',
+    flexDirection: 'column',
     left: 0,
     overflowX: 'hidden',
     overflowY: 'auto',
@@ -26,19 +27,6 @@ const useStyles = createUseStyles({
   },
 });
 
-function renderTaskItem(obj, onChange, onDelete) {
-  return (
-    <NapperTodoListTaskComponent
-      key={obj.id}
-      checked={obj.checked}
-      id={obj.id}
-      label={obj.label}
-      onChange={onChange}
-      onDelete={onDelete}
-    />
-  );
-}
-
 const NapperTodoListTasksComponent = ({
   onChange,
   onDelete,
@@ -47,8 +35,8 @@ const NapperTodoListTasksComponent = ({
 }) => {
   const classes = useStyles();
   return (
-    <div className={classnames(BASE_CLASS, classes.container)}>
-      <div className={classnames(`${BASE_CLASS}-wrp`, classes.wrp)}>
+    <div className={`${BASE_CLASS} ${classes.container}`}>
+      <div className={`${BASE_CLASS}-wrp ${classes.wrp}`}>
         {tasks.map(obj => render(obj, onChange, onDelete))}
       </div>
     </div>
@@ -56,7 +44,18 @@ const NapperTodoListTasksComponent = ({
 };
 
 NapperTodoListTasksComponent.defaultProps = {
-  render: renderTaskItem,
+  render: React.memo((obj, onChange, onDelete) => {
+    return (
+      <NapperTodoListTaskComponent
+        key={obj.id}
+        checked={obj.checked}
+        id={obj.id}
+        label={obj.label}
+        onChange={onChange}
+        onDelete={onDelete}
+      />
+    );
+  }),
 };
 
 NapperTodoListTasksComponent.propTypes = {

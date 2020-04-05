@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
@@ -29,8 +28,8 @@ const NapperTodoListFooterComponent = React.memo(
   ({ showCounter, showProgress, tasks }) => {
     const classes = useStyles();
     return (
-      <div className={classnames(BASE_CLASS, classes.container)}>
-        <div className={classnames(`${BASE_CLASS}-wrp`, classes.wrp)}>
+      <div className={`${BASE_CLASS} ${classes.container}`}>
+        <div className={`${BASE_CLASS}-wrp ${classes.wrp}`}>
           {showProgress && <NapperTodoListProgressComponent tasks={tasks} />}
           {showCounter && <NapperTodoListCounterComponent tasks={tasks} />}
         </div>

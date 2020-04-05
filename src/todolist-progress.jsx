@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 
@@ -50,14 +49,14 @@ const NapperTodoListProgressComponent = React.memo(({ tasks }) => {
   const percent = (completed * 100) / total;
   const radius = percent > 0 ? '0 2px 2px 0' : 2;
   return (
-    <div className={classnames(BASE_CLASS, classes.container)}>
-      <div className={classnames(`${BASE_CLASS}-bar`, classes.bar)}>
+    <div className={`${BASE_CLASS} ${classes.container}`}>
+      <div className={`${BASE_CLASS}-bar ${classes.bar}`}>
         <div
-          className={classnames(`${BASE_CLASS}-trk`, classes.trk)}
+          className={`${BASE_CLASS}-trk ${classes.trk}`}
           style={{ borderRadius: radius, left: `${percent}%` }}
         />
         <div
-          className={classnames(`${BASE_CLASS}-tmb`, classes.tmb)}
+          className={`${BASE_CLASS}-tmb ${classes.tmb}`}
           style={{ width: `${percent}%` }}
         />
       </div>

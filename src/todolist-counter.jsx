@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 
@@ -25,10 +24,10 @@ const NapperTodoListCounterComponent = React.memo(({ tasks }) => {
   const total = (tasks && tasks.length) || 0;
   const completed = (tasks && tasks.filter(obj => obj.checked).length) || 0;
   return (
-    <div className={classnames(BASE_CLASS, classes.container)}>
-      <span className={classnames(`${BASE_CLASS}-cpt`)}>{completed}</span>
-      <span className={classnames(`${BASE_CLASS}-spl`)}>/</span>
-      <span className={classnames(`${BASE_CLASS}-ttl`)}>{total}</span>
+    <div className={`${BASE_CLASS} ${classes.container}`}>
+      <span className={`${BASE_CLASS}-cpt`}>{completed}</span>
+      <span className={`${BASE_CLASS}-spl`}>/</span>
+      <span className={`${BASE_CLASS}-ttl`}>{total}</span>
     </div>
   );
 });

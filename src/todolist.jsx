@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { createUseStyles } from 'react-jss';
@@ -79,8 +78,8 @@ const NapperTodoListComponent = React.memo(
       <div
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...containerProps}
-        className={classnames(BASE_CLASS, classes.container)}>
-        <div className={classnames(`${BASE_CLASS}-wrp`, classes.wrp)}>
+        className={`${BASE_CLASS} ${classes.container}`}>
+        <div className={`${BASE_CLASS}-wrp ${classes.wrp}`}>
           <NapperTodoListHeaderComponent
             parentId={id}
             showCounter={counterOnTop}

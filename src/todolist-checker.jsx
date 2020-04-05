@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
@@ -30,16 +29,16 @@ const NapperTodoListCheckerComponent = ({ allChecked, onChange }) => {
     if (needUpdate) setChecked(allChecked);
   }, [allChecked, checked]);
   return (
-    <div className={classnames(BASE_CLASS, classes.container)}>
+    <div className={`${BASE_CLASS} ${classes.container}`}>
       <button
-        className={classnames(`${BASE_CLASS}-btn`, classes.btn)}
+        className={`${BASE_CLASS}-btn ${classes.btn}`}
         type="button"
         onClick={() => {
           const next = !checked;
           setChecked(next);
           onChange(next);
         }}>
-        <div className={classnames(`${BASE_CLASS}-lbl`, classes.lbl)}>
+        <div className={`${BASE_CLASS}-lbl ${classes.lbl}`}>
           {!checked && <span>Check all</span>}
           {checked && <span>Uncheck all</span>}
         </div>

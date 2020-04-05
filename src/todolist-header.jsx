@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
@@ -37,22 +36,20 @@ const NapperTodoListHeaderComponent = React.memo(
     const theme = useTheme();
     const classes = useStyles({ theme });
     return (
-      <div className={classnames(BASE_CLASS, classes.container)}>
-        <div className={classnames(`${BASE_CLASS}-wrp`, classes.wrp)}>
+      <div className={`${BASE_CLASS} ${classes.container}`}>
+        <div className={`${BASE_CLASS}-wrp ${classes.wrp}`}>
           {createHandler && (
             <button type="button" onClick={() => createHandler(parentId)}>
               <NapperTodoListIconPlus />
             </button>
           )}
           {title && (
-            <span className={classnames(`${BASE_CLASS}-tit`, classes.tit)}>
-              {title}
-            </span>
+            <span className={`${BASE_CLASS}-tit ${classes.tit}`}>{title}</span>
           )}
           {showCounter && <NapperTodoListCounterComponent tasks={tasks} />}
         </div>
         {showProgress && (
-          <div className={classnames(`${BASE_CLASS}-btm`, classes.btm)}>
+          <div className={`${BASE_CLASS}-btm ${classes.btm}`}>
             <NapperTodoListProgressComponent tasks={tasks} />
           </div>
         )}
