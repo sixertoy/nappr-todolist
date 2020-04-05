@@ -3,30 +3,34 @@ import resolve from '@rollup/plugin-node-resolve';
 import url from '@rollup/plugin-url';
 import svgr from '@svgr/rollup';
 import babel from 'rollup-plugin-babel';
-import external from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import { terser } from 'rollup-plugin-terser';
 
-import pkg from './package.json';
+import {
+  devDependencies,
+  main,
+  module,
+  peerDependencies,
+} from './package.json';
+
+const output = [
+  {
+    file: main,
+    format: 'cjs',
+    sourcemap: false,
+  },
+  {
+    file: module,
+    format: 'es',
+    sourcemap: false,
+  },
+];
 
 export default {
-  input: 'src/index.js',
-  output: [
-    {
-      file: pkg.main,
-      format: 'cjs',
-      sourcemap: false,
-    },
-    {
-      file: pkg.module,
-      format: 'es',
-      sourcemap: false,
-    },
-  ],
+  external: [...Object.keys(devDependencies), ...Object.keys(peerDependencies)],
+  input: 'src/index.jsx',
+  output,
   plugins: [
-    external({
-      includeDependencies: false,
-    }),
     postcss({
       minimize: true,
       plugins: [],
@@ -34,29 +38,13 @@ export default {
     }),
     url(),
     svgr(),
-    resolve(),
+    resolve({ extensions: ['.js', '.jsx'] }),
     babel({
-      exclude: 'node_modules/**',
-      plugins: [
-        '@babel/plugin-proposal-object-rest-spread',
-        '@babel/plugin-proposal-optional-chaining',
-        '@babel/plugin-syntax-dynamic-import',
-        '@babel/plugin-proposal-class-properties',
-        'transform-react-remove-prop-types',
-      ],
-      presets: ['react-app'],
+      babelrc: true,
+      exclude: ['node_modules/**'],
       runtimeHelpers: true,
     }),
-    commonjs({
-      // namedExports: {
-      //   'node_modules/react/index.js': [
-      //     'createContext',
-      //     'Component',
-      //     'useState',
-      //     'useEffect',
-      //   ],
-      // },
-    }),
+    commonjs(),
     terser(),
   ],
 };
