@@ -1,5 +1,5 @@
 {
-  "name": "@napper/napper-todolist",
+  "name": "@nappr/nappr-todolist",
   "version": "0.1.13",
   "description": "React todo list component",
   "author": "sixertoy <sixertoy.github@gmail.com>",
@@ -10,13 +10,13 @@
   "files": [
     "./dist"
   ],
-  "homepage": "https://github.com/sixertoy/napper-todolist",
+  "homepage": "https://github.com/sixertoy/nappr-todolist",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sixertoy/napper-todolist.git"
+    "url": "git+https://github.com/sixertoy/nappr-todolist.git"
   },
   "bugs": {
-    "url": "https://github.com/sixertoy/napper-todolist/issues",
+    "url": "https://github.com/sixertoy/nappr-todolist/issues",
     "email": "sixertoy.github@gmail.com"
   },
   "browserslist": {
