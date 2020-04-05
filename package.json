@@ -1,5 +1,5 @@
 {
-  "name": "@napper/napper-todolist",
+  "name": "napper-todolist",
   "version": "0.1.11",
   "description": "React todo list component",
   "author": "sixertoy <sixertoy.github@gmail.com>",
