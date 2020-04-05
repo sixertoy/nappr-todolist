@@ -4,7 +4,6 @@
   "description": "React todo list component",
   "author": "sixertoy <sixertoy.github@gmail.com>",
   "license": "ISC",
-  "private": false,
   "main": "./dist/bundle.cjs.js",
   "module": "./dist/bundle.esm.js",
   "files": [
