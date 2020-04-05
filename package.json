@@ -1,9 +1,10 @@
 {
-  "name": "napper-todolist",
+  "name": "@sixertoy/napper-todolist",
   "version": "0.1.9",
   "description": "React todo list component",
   "author": "sixertoy <sixertoy.github@gmail.com>",
   "license": "ISC",
+  "private": false,
   "main": "./dist/bundle.cjs.js",
   "module": "./dist/bundle.esm.js",
   "files": [
