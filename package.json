@@ -81,7 +81,6 @@
   },
   "peerDependencies": {
     "classnames": "^2.2.6",
-    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-jss": "^10.0.4"
@@ -90,10 +89,11 @@
     "cleanup": "rm -rf node_modules && rm yarn.lock",
     "lint:js": "eslint ./src/**/*.{js,jsx} -c ./.eslintrc.json",
     "lint:css": "stylelint ./src/**/*.css",
-    "lint": "yarn lint:js && yarn lint:css",
-    "prebuild": "rm -rf dist && yarn lint",
+    "lint": "npm run lint:js && npm run lint:css",
+    "prebuild": "rm -rf dist && npm run lint",
     "build": "rollup -c --silent",
     "dev": "rollup -c --watch",
-    "docs": "docsify serve ./docs --port=2999 --no-open"
+    "docs": "docsify serve ./docs --port=2999 --no-open",
+    "prepublishOnly": "rollup -c --silent"
   }
 }
