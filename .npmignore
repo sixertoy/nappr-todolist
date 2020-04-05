@@ -1,0 +1,13 @@
+.editorconfig
+.eslintrc.json
+.gitmojorc.json
+.huskyrc.json
+.lintstagedrc.json
+.nvmrc
+.prettierrc.json
+.stylelintrc.json
+.yarnrc
+.jest.config.js
+.rollup.config.js
+src/
+.scripts/

@@ -1,7 +1,7 @@
 {
   "name": "@nappr/nappr-todolist",
   "version": "0.1.15",
-  "description": "React todo list component",
+  "description": "Nappr TodoList component",
   "author": "sixertoy <sixertoy.github@gmail.com>",
   "license": "ISC",
   "private": false,
