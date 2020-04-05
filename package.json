@@ -5,12 +5,10 @@
   "author": "sixertoy <sixertoy.github@gmail.com>",
   "license": "ISC",
   "private": false,
-  "main": "./dist/bundle.cjs.js",
-  "module": "./dist/bundle.esm.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.es.js",
   "files": [
-    ".size-snapshot.json",
-    "dist/bundle.cjs.js",
-    "dist/bundle.esm.js"
+    "dist"
   ],
   "homepage": "https://github.com/sixertoy/nappr-todolist",
   "repository": {
@@ -37,17 +35,23 @@
     "node": "^10.6.0 || ^12.13.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.4",
-    "@babel/plugin-proposal-export-default-from": "^7.7.4",
-    "@babel/preset-env": "^7.7.4",
-    "@babel/preset-react": "^7.7.4",
-    "@types/react": "^16.9.19",
-    "@types/react-dom": "^16.9.5",
-    "babel-plugin-module-resolver": "^3.2.0",
-    "builtin-modules": "^3.1.0",
-    "classnames": "^2.2.6",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.9.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@rollup/plugin-url": "^4.0.2",
+    "@svgr/rollup": "^5.3.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^25.2.3",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-named-asset-import": "^0.3.6",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "babel-preset-react-app": "^9.1.2",
     "docsify": "^4.10.2",
-    "dotenv": "^8.2.0",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.10.0",
@@ -69,12 +73,12 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-jss": "^10.0.4",
-    "rollup": "^1.27.8",
-    "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-size-snapshot": "^0.10.0",
-    "rollup-plugin-terser": "^5.1.2",
+    "rollup": "^2.2.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-peer-deps-external": "^2.2.2",
+    "rollup-plugin-postcss": "^2.5.0",
+    "rollup-plugin-size-snapshot": "^0.11.0",
+    "rollup-plugin-terser": "^5.3.0",
     "stylelint": "13.2.0",
     "stylelint-config-standard": "20.0.0",
     "stylelint-order": "4.0.0",
@@ -82,8 +86,7 @@
     "typescript": "^3.7.5"
   },
   "peerDependencies": {
-    "classnames": "^2.2.6",
-    "react": "^16.12.0",
+    "react": ">=16.12.0",
     "react-dom": "^16.12.0",
     "react-jss": "^10.0.4"
   },
@@ -92,10 +95,10 @@
     "lint:js": "eslint ./src/**/*.{js,jsx} -c ./.eslintrc.json",
     "lint:css": "stylelint ./src/**/*.css",
     "lint": "npm run lint:js && npm run lint:css",
-    "prebuild": "rm -rf dist && npm run lint",
-    "build": "rollup -c --silent",
-    "dev": "rollup -c --watch",
     "docs": "docsify serve ./docs --port=2999 --no-open",
-    "prepublishOnly": "rollup -c --silent"
+    "prebuild": "rm -rf dist",
+    "build": "NODE_ENV=production BABEL_ENV=production rollup -c",
+    "predev": "npm run lint",
+    "dev": "NODE_ENV=production BABEL_ENV=production rollup -c -w"
   }
 }

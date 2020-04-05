@@ -1,147 +1,85 @@
-import e, { useState as t, useEffect as r } from 'react';
+import e, { useState as t, useEffect as n } from 'react';
 import {
-  createUseStyles as n,
+  createUseStyles as r,
   useTheme as o,
   JssProvider as a,
-  jss as i,
-  ThemeProvider as c,
+  jss as c,
+  ThemeProvider as i,
 } from 'react-jss';
-import s from 'classnames';
-function l(e, t, r) {
+function l(e, t, n) {
   return (
     t in e
       ? Object.defineProperty(e, t, {
-          value: r,
+          value: n,
           enumerable: !0,
           configurable: !0,
           writable: !0,
         })
-      : (e[t] = r),
+      : (e[t] = n),
     e
   );
 }
-function u() {
-  return (u =
-    Object.assign ||
-    function(e) {
-      for (var t = 1; t < arguments.length; t++) {
-        var r = arguments[t];
-        for (var n in r)
-          Object.prototype.hasOwnProperty.call(r, n) && (e[n] = r[n]);
-      }
-      return e;
-    }).apply(this, arguments);
-}
-function f(e, t) {
-  var r = Object.keys(e);
+function s(e, t) {
+  var n = Object.keys(e);
   if (Object.getOwnPropertySymbols) {
-    var n = Object.getOwnPropertySymbols(e);
+    var r = Object.getOwnPropertySymbols(e);
     t &&
-      (n = n.filter(function(t) {
+      (r = r.filter(function(t) {
         return Object.getOwnPropertyDescriptor(e, t).enumerable;
       })),
-      r.push.apply(r, n);
+      n.push.apply(n, r);
   }
-  return r;
+  return n;
 }
-function p(e, t) {
+function u(e, t) {
   if (null == e) return {};
-  var r,
-    n,
+  var n,
+    r,
     o = (function(e, t) {
       if (null == e) return {};
-      var r,
-        n,
+      var n,
+        r,
         o = {},
         a = Object.keys(e);
-      for (n = 0; n < a.length; n++)
-        (r = a[n]), t.indexOf(r) >= 0 || (o[r] = e[r]);
+      for (r = 0; r < a.length; r++)
+        (n = a[r]), t.indexOf(n) >= 0 || (o[n] = e[n]);
       return o;
     })(e, t);
   if (Object.getOwnPropertySymbols) {
     var a = Object.getOwnPropertySymbols(e);
-    for (n = 0; n < a.length; n++)
-      (r = a[n]),
-        t.indexOf(r) >= 0 ||
-          (Object.prototype.propertyIsEnumerable.call(e, r) && (o[r] = e[r]));
+    for (r = 0; r < a.length; r++)
+      (n = a[r]),
+        t.indexOf(n) >= 0 ||
+          (Object.prototype.propertyIsEnumerable.call(e, n) && (o[n] = e[n]));
   }
   return o;
 }
-function d(e, t) {
-  return (
-    (function(e) {
-      if (Array.isArray(e)) return e;
-    })(e) ||
-    (function(e, t) {
-      if ('undefined' == typeof Symbol || !(Symbol.iterator in Object(e)))
-        return;
-      var r = [],
-        n = !0,
-        o = !1,
-        a = void 0;
-      try {
-        for (
-          var i, c = e[Symbol.iterator]();
-          !(n = (i = c.next()).done) && (r.push(i.value), !t || r.length !== t);
-          n = !0
-        );
-      } catch (e) {
-        (o = !0), (a = e);
-      } finally {
-        try {
-          n || null == c.return || c.return();
-        } finally {
-          if (o) throw a;
-        }
-      }
-      return r;
-    })(e, t) ||
-    y(e, t) ||
-    (function() {
-      throw new TypeError(
-        'Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.'
-      );
-    })()
-  );
-}
-function m(e) {
-  return (
-    (function(e) {
-      if (Array.isArray(e)) return h(e);
-    })(e) ||
-    (function(e) {
-      if ('undefined' != typeof Symbol && Symbol.iterator in Object(e))
-        return Array.from(e);
-    })(e) ||
-    y(e) ||
-    (function() {
-      throw new TypeError(
-        'Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.'
-      );
-    })()
-  );
-}
-function y(e, t) {
-  if (e) {
-    if ('string' == typeof e) return h(e, t);
-    var r = Object.prototype.toString.call(e).slice(8, -1);
-    return (
-      'Object' === r && e.constructor && (r = e.constructor.name),
-      'Map' === r || 'Set' === r
-        ? Array.from(r)
-        : 'Arguments' === r ||
-          /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)
-        ? h(e, t)
-        : void 0
-    );
+!(function(e, t) {
+  void 0 === t && (t = {});
+  var n = t.insertAt;
+  if (e && 'undefined' != typeof document) {
+    var r = document.head || document.getElementsByTagName('head')[0],
+      o = document.createElement('style');
+    (o.type = 'text/css'),
+      'top' === n && r.firstChild
+        ? r.insertBefore(o, r.firstChild)
+        : r.appendChild(o),
+      o.styleSheet
+        ? (o.styleSheet.cssText = e)
+        : o.appendChild(document.createTextNode(e));
   }
-}
-function h(e, t) {
-  (null == t || t > e.length) && (t = e.length);
-  for (var r = 0, n = new Array(t); r < t; r++) n[r] = e[r];
-  return n;
-}
-function b(e, t) {
+})(
+  '\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJpbmRleC5jc3MifQ== */'
+);
+var f = {
+  backgroundHover: 'rgba(0, 0, 0, 0.15)',
+  color: '#000000',
+  progressRadius: 2,
+  progressSize: 5,
+  taskRadius: 4,
+  titleFontSize: 20,
+};
+function p(e, t) {
   return e((t = { exports: {} }), t.exports), t.exports;
   /** @license React v16.13.1
    * react-is.production.min.js
@@ -152,146 +90,146 @@ function b(e, t) {
    * LICENSE file in the root directory of this source tree.
    */
 }
-var v = 'function' == typeof Symbol && Symbol.for,
-  g = v ? Symbol.for('react.element') : 60103,
-  w = v ? Symbol.for('react.portal') : 60106,
-  E = v ? Symbol.for('react.fragment') : 60107,
-  O = v ? Symbol.for('react.strict_mode') : 60108,
-  k = v ? Symbol.for('react.profiler') : 60114,
-  S = v ? Symbol.for('react.provider') : 60109,
-  x = v ? Symbol.for('react.context') : 60110,
-  C = v ? Symbol.for('react.async_mode') : 60111,
-  j = v ? Symbol.for('react.concurrent_mode') : 60111,
-  P = v ? Symbol.for('react.forward_ref') : 60112,
-  T = v ? Symbol.for('react.suspense') : 60113,
-  R = v ? Symbol.for('react.suspense_list') : 60120,
-  N = v ? Symbol.for('react.memo') : 60115,
-  $ = v ? Symbol.for('react.lazy') : 60116,
-  I = v ? Symbol.for('react.block') : 60121,
-  M = v ? Symbol.for('react.fundamental') : 60117,
-  A = v ? Symbol.for('react.responder') : 60118,
-  z = v ? Symbol.for('react.scope') : 60119;
-function D(e) {
+var d = 'function' == typeof Symbol && Symbol.for,
+  m = d ? Symbol.for('react.element') : 60103,
+  y = d ? Symbol.for('react.portal') : 60106,
+  h = d ? Symbol.for('react.fragment') : 60107,
+  b = d ? Symbol.for('react.strict_mode') : 60108,
+  v = d ? Symbol.for('react.profiler') : 60114,
+  g = d ? Symbol.for('react.provider') : 60109,
+  w = d ? Symbol.for('react.context') : 60110,
+  E = d ? Symbol.for('react.async_mode') : 60111,
+  O = d ? Symbol.for('react.concurrent_mode') : 60111,
+  S = d ? Symbol.for('react.forward_ref') : 60112,
+  x = d ? Symbol.for('react.suspense') : 60113,
+  k = d ? Symbol.for('react.suspense_list') : 60120,
+  C = d ? Symbol.for('react.memo') : 60115,
+  j = d ? Symbol.for('react.lazy') : 60116,
+  P = d ? Symbol.for('react.block') : 60121,
+  N = d ? Symbol.for('react.fundamental') : 60117,
+  I = d ? Symbol.for('react.responder') : 60118,
+  T = d ? Symbol.for('react.scope') : 60119;
+function $(e) {
   if ('object' == typeof e && null !== e) {
     var t = e.$$typeof;
     switch (t) {
-      case g:
+      case m:
         switch ((e = e.type)) {
-          case C:
-          case j:
           case E:
-          case k:
           case O:
-          case T:
+          case h:
+          case v:
+          case b:
+          case x:
             return e;
           default:
             switch ((e = e && e.$$typeof)) {
-              case x:
-              case P:
-              case $:
-              case N:
+              case w:
               case S:
+              case j:
+              case C:
+              case g:
                 return e;
               default:
                 return t;
             }
         }
-      case w:
+      case y:
         return t;
     }
   }
 }
-function q(e) {
-  return D(e) === j;
+function R(e) {
+  return $(e) === O;
 }
-var _ = {
-    AsyncMode: C,
-    ConcurrentMode: j,
-    ContextConsumer: x,
-    ContextProvider: S,
-    Element: g,
-    ForwardRef: P,
-    Fragment: E,
-    Lazy: $,
-    Memo: N,
-    Portal: w,
-    Profiler: k,
-    StrictMode: O,
-    Suspense: T,
+var M = {
+    AsyncMode: E,
+    ConcurrentMode: O,
+    ContextConsumer: w,
+    ContextProvider: g,
+    Element: m,
+    ForwardRef: S,
+    Fragment: h,
+    Lazy: j,
+    Memo: C,
+    Portal: y,
+    Profiler: v,
+    StrictMode: b,
+    Suspense: x,
     isAsyncMode: function(e) {
-      return q(e) || D(e) === C;
+      return R(e) || $(e) === E;
     },
-    isConcurrentMode: q,
+    isConcurrentMode: R,
     isContextConsumer: function(e) {
-      return D(e) === x;
+      return $(e) === w;
     },
     isContextProvider: function(e) {
-      return D(e) === S;
+      return $(e) === g;
     },
     isElement: function(e) {
-      return 'object' == typeof e && null !== e && e.$$typeof === g;
+      return 'object' == typeof e && null !== e && e.$$typeof === m;
     },
     isForwardRef: function(e) {
-      return D(e) === P;
+      return $(e) === S;
     },
     isFragment: function(e) {
-      return D(e) === E;
+      return $(e) === h;
     },
     isLazy: function(e) {
-      return D(e) === $;
+      return $(e) === j;
     },
     isMemo: function(e) {
-      return D(e) === N;
+      return $(e) === C;
     },
     isPortal: function(e) {
-      return D(e) === w;
+      return $(e) === y;
     },
     isProfiler: function(e) {
-      return D(e) === k;
+      return $(e) === v;
     },
     isStrictMode: function(e) {
-      return D(e) === O;
+      return $(e) === b;
     },
     isSuspense: function(e) {
-      return D(e) === T;
+      return $(e) === x;
     },
     isValidElementType: function(e) {
       return (
         'string' == typeof e ||
         'function' == typeof e ||
-        e === E ||
-        e === j ||
-        e === k ||
+        e === h ||
         e === O ||
-        e === T ||
-        e === R ||
+        e === v ||
+        e === b ||
+        e === x ||
+        e === k ||
         ('object' == typeof e &&
           null !== e &&
-          (e.$$typeof === $ ||
-            e.$$typeof === N ||
+          (e.$$typeof === j ||
+            e.$$typeof === C ||
+            e.$$typeof === g ||
+            e.$$typeof === w ||
             e.$$typeof === S ||
-            e.$$typeof === x ||
-            e.$$typeof === P ||
-            e.$$typeof === M ||
-            e.$$typeof === A ||
-            e.$$typeof === z ||
-            e.$$typeof === I))
+            e.$$typeof === N ||
+            e.$$typeof === I ||
+            e.$$typeof === T ||
+            e.$$typeof === P))
       );
     },
-    typeOf: D,
+    typeOf: $,
   },
-  V = b(function(e, t) {
+  z = p(function(e, t) {
     'production' !== process.env.NODE_ENV &&
       (function() {
         var e = 'function' == typeof Symbol && Symbol.for,
-          r = e ? Symbol.for('react.element') : 60103,
-          n = e ? Symbol.for('react.portal') : 60106,
+          n = e ? Symbol.for('react.element') : 60103,
+          r = e ? Symbol.for('react.portal') : 60106,
           o = e ? Symbol.for('react.fragment') : 60107,
           a = e ? Symbol.for('react.strict_mode') : 60108,
-          i = e ? Symbol.for('react.profiler') : 60114,
-          c = e ? Symbol.for('react.provider') : 60109,
-          s = e ? Symbol.for('react.context') : 60110,
-          l = e ? Symbol.for('react.async_mode') : 60111,
+          c = e ? Symbol.for('react.profiler') : 60114,
+          i = e ? Symbol.for('react.provider') : 60109,
+          l = e ? Symbol.for('react.context') : 60110,
+          s = e ? Symbol.for('react.async_mode') : 60111,
           u = e ? Symbol.for('react.concurrent_mode') : 60111,
           f = e ? Symbol.for('react.forward_ref') : 60112,
           p = e ? Symbol.for('react.suspense') : 60113,
@@ -306,64 +244,64 @@ var _ = {
           if ('object' == typeof e && null !== e) {
             var t = e.$$typeof;
             switch (t) {
-              case r:
+              case n:
                 var d = e.type;
                 switch (d) {
-                  case l:
+                  case s:
                   case u:
                   case o:
-                  case i:
+                  case c:
                   case a:
                   case p:
                     return d;
                   default:
                     var h = d && d.$$typeof;
                     switch (h) {
-                      case s:
+                      case l:
                       case f:
                       case y:
                       case m:
-                      case c:
+                      case i:
                         return h;
                       default:
                         return t;
                     }
                 }
-              case n:
+              case r:
                 return t;
             }
           }
         }
-        var E = l,
+        var E = s,
           O = u,
-          k = s,
-          S = c,
-          x = r,
+          S = l,
+          x = i,
+          k = n,
           C = f,
           j = o,
           P = y,
-          T = m,
-          R = n,
-          N = i,
+          N = m,
+          I = r,
+          T = c,
           $ = a,
-          I = p,
+          R = p,
           M = !1;
-        function A(e) {
+        function z(e) {
           return w(e) === u;
         }
         (t.AsyncMode = E),
           (t.ConcurrentMode = O),
-          (t.ContextConsumer = k),
-          (t.ContextProvider = S),
-          (t.Element = x),
+          (t.ContextConsumer = S),
+          (t.ContextProvider = x),
+          (t.Element = k),
           (t.ForwardRef = C),
           (t.Fragment = j),
           (t.Lazy = P),
-          (t.Memo = T),
-          (t.Portal = R),
-          (t.Profiler = N),
+          (t.Memo = N),
+          (t.Portal = I),
+          (t.Profiler = T),
           (t.StrictMode = $),
-          (t.Suspense = I),
+          (t.Suspense = R),
           (t.isAsyncMode = function(e) {
             return (
               M ||
@@ -371,18 +309,18 @@ var _ = {
                 console.warn(
                   'The ReactIs.isAsyncMode() alias has been deprecated, and will be removed in React 17+. Update your code to use ReactIs.isConcurrentMode() instead. It has the exact same API.'
                 )),
-              A(e) || w(e) === l
+              z(e) || w(e) === s
             );
           }),
-          (t.isConcurrentMode = A),
+          (t.isConcurrentMode = z),
           (t.isContextConsumer = function(e) {
-            return w(e) === s;
+            return w(e) === l;
           }),
           (t.isContextProvider = function(e) {
-            return w(e) === c;
+            return w(e) === i;
           }),
           (t.isElement = function(e) {
-            return 'object' == typeof e && null !== e && e.$$typeof === r;
+            return 'object' == typeof e && null !== e && e.$$typeof === n;
           }),
           (t.isForwardRef = function(e) {
             return w(e) === f;
@@ -397,10 +335,10 @@ var _ = {
             return w(e) === m;
           }),
           (t.isPortal = function(e) {
-            return w(e) === n;
+            return w(e) === r;
           }),
           (t.isProfiler = function(e) {
-            return w(e) === i;
+            return w(e) === c;
           }),
           (t.isStrictMode = function(e) {
             return w(e) === a;
@@ -414,7 +352,7 @@ var _ = {
               'function' == typeof e ||
               e === o ||
               e === u ||
-              e === i ||
+              e === c ||
               e === a ||
               e === p ||
               e === d ||
@@ -422,8 +360,8 @@ var _ = {
                 null !== e &&
                 (e.$$typeof === y ||
                   e.$$typeof === m ||
-                  e.$$typeof === c ||
-                  e.$$typeof === s ||
+                  e.$$typeof === i ||
+                  e.$$typeof === l ||
                   e.$$typeof === f ||
                   e.$$typeof === b ||
                   e.$$typeof === v ||
@@ -434,54 +372,54 @@ var _ = {
           (t.typeOf = w);
       })();
   }),
-  H =
-    (V.AsyncMode,
-    V.ConcurrentMode,
-    V.ContextConsumer,
-    V.ContextProvider,
-    V.Element,
-    V.ForwardRef,
-    V.Fragment,
-    V.Lazy,
-    V.Memo,
-    V.Portal,
-    V.Profiler,
-    V.StrictMode,
-    V.Suspense,
-    V.isAsyncMode,
-    V.isConcurrentMode,
-    V.isContextConsumer,
-    V.isContextProvider,
-    V.isElement,
-    V.isForwardRef,
-    V.isFragment,
-    V.isLazy,
-    V.isMemo,
-    V.isPortal,
-    V.isProfiler,
-    V.isStrictMode,
-    V.isSuspense,
-    V.isValidElementType,
-    V.typeOf,
-    b(function(e) {
-      'production' === process.env.NODE_ENV ? (e.exports = _) : (e.exports = V);
+  A =
+    (z.AsyncMode,
+    z.ConcurrentMode,
+    z.ContextConsumer,
+    z.ContextProvider,
+    z.Element,
+    z.ForwardRef,
+    z.Fragment,
+    z.Lazy,
+    z.Memo,
+    z.Portal,
+    z.Profiler,
+    z.StrictMode,
+    z.Suspense,
+    z.isAsyncMode,
+    z.isConcurrentMode,
+    z.isContextConsumer,
+    z.isContextProvider,
+    z.isElement,
+    z.isForwardRef,
+    z.isFragment,
+    z.isLazy,
+    z.isMemo,
+    z.isPortal,
+    z.isProfiler,
+    z.isStrictMode,
+    z.isSuspense,
+    z.isValidElementType,
+    z.typeOf,
+    p(function(e) {
+      'production' === process.env.NODE_ENV ? (e.exports = M) : (e.exports = z);
     })),
-  F = Object.getOwnPropertySymbols,
-  L = Object.prototype.hasOwnProperty,
-  W = Object.prototype.propertyIsEnumerable;
-function B(e) {
+  D = Object.getOwnPropertySymbols,
+  _ = Object.prototype.hasOwnProperty,
+  V = Object.prototype.propertyIsEnumerable;
+function L(e) {
   if (null == e)
     throw new TypeError(
       'Object.assign cannot be called with null or undefined'
     );
   return Object(e);
 }
-var U = (function() {
+var F = (function() {
     try {
       if (!Object.assign) return !1;
       var e = new String('abc');
       if (((e[5] = 'de'), '5' === Object.getOwnPropertyNames(e)[0])) return !1;
-      for (var t = {}, r = 0; r < 10; r++) t['_' + String.fromCharCode(r)] = r;
+      for (var t = {}, n = 0; n < 10; n++) t['_' + String.fromCharCode(n)] = n;
       if (
         '0123456789' !==
         Object.getOwnPropertyNames(t)
@@ -491,12 +429,12 @@ var U = (function() {
           .join('')
       )
         return !1;
-      var n = {};
+      var r = {};
       return (
         'abcdefghijklmnopqrst'.split('').forEach(function(e) {
-          n[e] = e;
+          r[e] = e;
         }),
-        'abcdefghijklmnopqrst' === Object.keys(Object.assign({}, n)).join('')
+        'abcdefghijklmnopqrst' === Object.keys(Object.assign({}, r)).join('')
       );
     } catch (e) {
       return !1;
@@ -504,24 +442,24 @@ var U = (function() {
   })()
     ? Object.assign
     : function(e, t) {
-        for (var r, n, o = B(e), a = 1; a < arguments.length; a++) {
-          for (var i in (r = Object(arguments[a])))
-            L.call(r, i) && (o[i] = r[i]);
-          if (F) {
-            n = F(r);
-            for (var c = 0; c < n.length; c++)
-              W.call(r, n[c]) && (o[n[c]] = r[n[c]]);
+        for (var n, r, o = L(e), a = 1; a < arguments.length; a++) {
+          for (var c in (n = Object(arguments[a])))
+            _.call(n, c) && (o[c] = n[c]);
+          if (D) {
+            r = D(n);
+            for (var i = 0; i < r.length; i++)
+              V.call(n, r[i]) && (o[r[i]] = n[r[i]]);
           }
         }
         return o;
       },
-  Y = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED',
-  J = function() {};
+  H = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED',
+  W = function() {};
 if ('production' !== process.env.NODE_ENV) {
-  var X = Y,
-    G = {},
-    K = Function.call.bind(Object.prototype.hasOwnProperty);
-  J = function(e) {
+  var B = H,
+    q = {},
+    U = Function.call.bind(Object.prototype.hasOwnProperty);
+  W = function(e) {
     var t = 'Warning: ' + e;
     'undefined' != typeof console && console.error(t);
     try {
@@ -529,205 +467,205 @@ if ('production' !== process.env.NODE_ENV) {
     } catch (e) {}
   };
 }
-function Q(e, t, r, n, o) {
+function J(e, t, n, r, o) {
   if ('production' !== process.env.NODE_ENV)
     for (var a in e)
-      if (K(e, a)) {
-        var i;
+      if (U(e, a)) {
+        var c;
         try {
           if ('function' != typeof e[a]) {
-            var c = Error(
-              (n || 'React class') +
+            var i = Error(
+              (r || 'React class') +
                 ': ' +
-                r +
+                n +
                 ' type `' +
                 a +
                 '` is invalid; it must be a function, usually from the `prop-types` package, but received `' +
                 typeof e[a] +
                 '`.'
             );
-            throw ((c.name = 'Invariant Violation'), c);
+            throw ((i.name = 'Invariant Violation'), i);
           }
-          i = e[a](t, a, n, r, null, X);
+          c = e[a](t, a, r, n, null, B);
         } catch (e) {
-          i = e;
+          c = e;
         }
         if (
-          (!i ||
-            i instanceof Error ||
-            J(
-              (n || 'React class') +
+          (!c ||
+            c instanceof Error ||
+            W(
+              (r || 'React class') +
                 ': type specification of ' +
-                r +
+                n +
                 ' `' +
                 a +
                 '` is invalid; the type checker function must return `null` or an `Error` but returned a ' +
-                typeof i +
+                typeof c +
                 '. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).'
             ),
-          i instanceof Error && !(i.message in G))
+          c instanceof Error && !(c.message in q))
         ) {
-          G[i.message] = !0;
-          var s = o ? o() : '';
-          J('Failed ' + r + ' type: ' + i.message + (null != s ? s : ''));
+          q[c.message] = !0;
+          var l = o ? o() : '';
+          W('Failed ' + n + ' type: ' + c.message + (null != l ? l : ''));
         }
       }
 }
-Q.resetWarningCache = function() {
-  'production' !== process.env.NODE_ENV && (G = {});
+J.resetWarningCache = function() {
+  'production' !== process.env.NODE_ENV && (q = {});
 };
-var Z = Q,
-  ee = Function.call.bind(Object.prototype.hasOwnProperty),
-  te = function() {};
-function re() {
+var Y = J,
+  X = Function.call.bind(Object.prototype.hasOwnProperty),
+  Z = function() {};
+function G() {
   return null;
 }
 'production' !== process.env.NODE_ENV &&
-  (te = function(e) {
+  (Z = function(e) {
     var t = 'Warning: ' + e;
     'undefined' != typeof console && console.error(t);
     try {
       throw new Error(t);
     } catch (e) {}
   });
-var ne = function(e, t) {
-  var r = 'function' == typeof Symbol && Symbol.iterator;
-  var n = {
-    array: c('array'),
-    bool: c('boolean'),
-    func: c('function'),
-    number: c('number'),
-    object: c('object'),
-    string: c('string'),
-    symbol: c('symbol'),
-    any: i(re),
+var Q = function(e, t) {
+  var n = 'function' == typeof Symbol && Symbol.iterator;
+  var r = {
+    array: i('array'),
+    bool: i('boolean'),
+    func: i('function'),
+    number: i('number'),
+    object: i('object'),
+    string: i('string'),
+    symbol: i('symbol'),
+    any: c(G),
     arrayOf: function(e) {
-      return i(function(t, r, n, o, i) {
+      return c(function(t, n, r, o, c) {
         if ('function' != typeof e)
           return new a(
             'Property `' +
-              i +
+              c +
               '` of component `' +
-              n +
+              r +
               '` has invalid PropType notation inside arrayOf.'
           );
-        var c = t[r];
-        if (!Array.isArray(c))
+        var i = t[n];
+        if (!Array.isArray(i))
           return new a(
             'Invalid ' +
               o +
               ' `' +
-              i +
+              c +
               '` of type `' +
-              l(c) +
+              s(i) +
               '` supplied to `' +
-              n +
+              r +
               '`, expected an array.'
           );
-        for (var s = 0; s < c.length; s++) {
-          var u = e(c, s, n, o, i + '[' + s + ']', Y);
+        for (var l = 0; l < i.length; l++) {
+          var u = e(i, l, r, o, c + '[' + l + ']', H);
           if (u instanceof Error) return u;
         }
         return null;
       });
     },
-    element: i(function(t, r, n, o, i) {
-      var c = t[r];
-      return e(c)
+    element: c(function(t, n, r, o, c) {
+      var i = t[n];
+      return e(i)
         ? null
         : new a(
             'Invalid ' +
               o +
               ' `' +
-              i +
+              c +
               '` of type `' +
-              l(c) +
+              s(i) +
               '` supplied to `' +
-              n +
+              r +
               '`, expected a single ReactElement.'
           );
     }),
-    elementType: i(function(e, t, r, n, o) {
-      var i = e[t];
-      return H.isValidElementType(i)
+    elementType: c(function(e, t, n, r, o) {
+      var c = e[t];
+      return A.isValidElementType(c)
         ? null
         : new a(
             'Invalid ' +
-              n +
+              r +
               ' `' +
               o +
               '` of type `' +
-              l(i) +
+              s(c) +
               '` supplied to `' +
-              r +
+              n +
               '`, expected a single ReactElement type.'
           );
     }),
     instanceOf: function(e) {
-      return i(function(t, r, n, o, i) {
-        if (!(t[r] instanceof e)) {
-          var c = e.name || '<<anonymous>>';
+      return c(function(t, n, r, o, c) {
+        if (!(t[n] instanceof e)) {
+          var i = e.name || '<<anonymous>>';
           return new a(
             'Invalid ' +
               o +
               ' `' +
-              i +
+              c +
               '` of type `' +
               (function(e) {
                 if (!e.constructor || !e.constructor.name)
                   return '<<anonymous>>';
                 return e.constructor.name;
-              })(t[r]) +
+              })(t[n]) +
               '` supplied to `' +
-              n +
+              r +
               '`, expected instance of `' +
-              c +
+              i +
               '`.'
           );
         }
         return null;
       });
     },
-    node: i(function(e, t, r, n, o) {
-      return s(e[t])
+    node: c(function(e, t, n, r, o) {
+      return l(e[t])
         ? null
         : new a(
             'Invalid ' +
-              n +
+              r +
               ' `' +
               o +
               '` supplied to `' +
-              r +
+              n +
               '`, expected a ReactNode.'
           );
     }),
     objectOf: function(e) {
-      return i(function(t, r, n, o, i) {
+      return c(function(t, n, r, o, c) {
         if ('function' != typeof e)
           return new a(
             'Property `' +
-              i +
+              c +
               '` of component `' +
-              n +
+              r +
               '` has invalid PropType notation inside objectOf.'
           );
-        var c = t[r],
-          s = l(c);
-        if ('object' !== s)
+        var i = t[n],
+          l = s(i);
+        if ('object' !== l)
           return new a(
             'Invalid ' +
               o +
               ' `' +
-              i +
+              c +
               '` of type `' +
-              s +
+              l +
               '` supplied to `' +
-              n +
+              r +
               '`, expected an object.'
           );
-        for (var u in c)
-          if (ee(c, u)) {
-            var f = e(c, u, n, o, i + '.' + u, Y);
+        for (var u in i)
+          if (X(i, u)) {
+            var f = e(i, u, r, o, c + '.' + u, H);
             if (f instanceof Error) return f;
           }
         return null;
@@ -738,86 +676,86 @@ var ne = function(e, t) {
         return (
           'production' !== process.env.NODE_ENV &&
             (arguments.length > 1
-              ? te(
+              ? Z(
                   'Invalid arguments supplied to oneOf, expected an array, got ' +
                     arguments.length +
                     ' arguments. A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).'
                 )
-              : te('Invalid argument supplied to oneOf, expected an array.')),
-          re
+              : Z('Invalid argument supplied to oneOf, expected an array.')),
+          G
         );
-      function t(t, r, n, i, c) {
-        for (var s = t[r], l = 0; l < e.length; l++)
-          if (o(s, e[l])) return null;
+      function t(t, n, r, c, i) {
+        for (var l = t[n], s = 0; s < e.length; s++)
+          if (o(l, e[s])) return null;
         var f = JSON.stringify(e, function(e, t) {
           return 'symbol' === u(t) ? String(t) : t;
         });
         return new a(
           'Invalid ' +
-            i +
-            ' `' +
             c +
+            ' `' +
+            i +
             '` of value `' +
-            String(s) +
+            String(l) +
             '` supplied to `' +
-            n +
+            r +
             '`, expected one of ' +
             f +
             '.'
         );
       }
-      return i(t);
+      return c(t);
     },
     oneOfType: function(e) {
       if (!Array.isArray(e))
         return (
           'production' !== process.env.NODE_ENV &&
-            te(
+            Z(
               'Invalid argument supplied to oneOfType, expected an instance of array.'
             ),
-          re
+          G
         );
       for (var t = 0; t < e.length; t++) {
-        var r = e[t];
-        if ('function' != typeof r)
+        var n = e[t];
+        if ('function' != typeof n)
           return (
-            te(
+            Z(
               'Invalid argument supplied to oneOfType. Expected an array of check functions, but received ' +
-                f(r) +
+                f(n) +
                 ' at index ' +
                 t +
                 '.'
             ),
-            re
+            G
           );
       }
-      return i(function(t, r, n, o, i) {
-        for (var c = 0; c < e.length; c++) {
-          if (null == (0, e[c])(t, r, n, o, i, Y)) return null;
+      return c(function(t, n, r, o, c) {
+        for (var i = 0; i < e.length; i++) {
+          if (null == (0, e[i])(t, n, r, o, c, H)) return null;
         }
-        return new a('Invalid ' + o + ' `' + i + '` supplied to `' + n + '`.');
+        return new a('Invalid ' + o + ' `' + c + '` supplied to `' + r + '`.');
       });
     },
     shape: function(e) {
-      return i(function(t, r, n, o, i) {
-        var c = t[r],
-          s = l(c);
-        if ('object' !== s)
+      return c(function(t, n, r, o, c) {
+        var i = t[n],
+          l = s(i);
+        if ('object' !== l)
           return new a(
             'Invalid ' +
               o +
               ' `' +
-              i +
+              c +
               '` of type `' +
-              s +
+              l +
               '` supplied to `' +
-              n +
+              r +
               '`, expected `object`.'
           );
         for (var u in e) {
           var f = e[u];
           if (f) {
-            var p = f(c, u, n, o, i + '.' + u, Y);
+            var p = f(i, u, r, o, c + '.' + u, H);
             if (p) return p;
           }
         }
@@ -825,22 +763,22 @@ var ne = function(e, t) {
       });
     },
     exact: function(e) {
-      return i(function(t, r, n, o, i) {
-        var c = t[r],
-          s = l(c);
-        if ('object' !== s)
+      return c(function(t, n, r, o, c) {
+        var i = t[n],
+          l = s(i);
+        if ('object' !== l)
           return new a(
             'Invalid ' +
               o +
               ' `' +
-              i +
+              c +
               '` of type `' +
-              s +
+              l +
               '` supplied to `' +
-              n +
+              r +
               '`, expected `object`.'
           );
-        var u = U({}, t[r], e);
+        var u = F({}, t[n], e);
         for (var f in u) {
           var p = e[f];
           if (!p)
@@ -848,17 +786,17 @@ var ne = function(e, t) {
               'Invalid ' +
                 o +
                 ' `' +
-                i +
+                c +
                 '` key `' +
                 f +
                 '` supplied to `' +
-                n +
+                r +
                 '`.\nBad object: ' +
-                JSON.stringify(t[r], null, '  ') +
+                JSON.stringify(t[n], null, '  ') +
                 '\nValid keys: ' +
                 JSON.stringify(Object.keys(e), null, '  ')
             );
-          var d = p(c, f, n, o, i + '.' + f, Y);
+          var d = p(i, f, r, o, c + '.' + f, H);
           if (d) return d;
         }
         return null;
@@ -871,12 +809,12 @@ var ne = function(e, t) {
   function a(e) {
     (this.message = e), (this.stack = '');
   }
-  function i(e) {
+  function c(e) {
     if ('production' !== process.env.NODE_ENV)
-      var r = {},
-        n = 0;
-    function o(o, i, c, s, l, u, f) {
-      if (((s = s || '<<anonymous>>'), (u = u || c), f !== Y)) {
+      var n = {},
+        r = 0;
+    function o(o, c, i, l, s, u, f) {
+      if (((l = l || '<<anonymous>>'), (u = u || i), f !== H)) {
         if (t) {
           var p = new Error(
             'Calling PropTypes validators directly is not supported by the `prop-types` package. Use `PropTypes.checkPropTypes()` to call them. Read more at http://fb.me/use-check-prop-types'
@@ -887,60 +825,60 @@ var ne = function(e, t) {
           'production' !== process.env.NODE_ENV &&
           'undefined' != typeof console
         ) {
-          var d = s + ':' + c;
-          !r[d] &&
-            n < 3 &&
-            (te(
+          var d = l + ':' + i;
+          !n[d] &&
+            r < 3 &&
+            (Z(
               'You are manually calling a React.PropTypes validation function for the `' +
                 u +
                 '` prop on `' +
-                s +
+                l +
                 '`. This is deprecated and will throw in the standalone `prop-types` package. You may be seeing this warning due to a third-party PropTypes library. See https://fb.me/react-warning-dont-call-proptypes for details.'
             ),
-            (r[d] = !0),
-            n++);
+            (n[d] = !0),
+            r++);
         }
       }
-      return null == i[c]
+      return null == c[i]
         ? o
-          ? null === i[c]
+          ? null === c[i]
             ? new a(
                 'The ' +
-                  l +
+                  s +
                   ' `' +
                   u +
                   '` is marked as required in `' +
-                  s +
+                  l +
                   '`, but its value is `null`.'
               )
             : new a(
                 'The ' +
-                  l +
+                  s +
                   ' `' +
                   u +
                   '` is marked as required in `' +
-                  s +
+                  l +
                   '`, but its value is `undefined`.'
               )
           : null
-        : e(i, c, s, l, u);
+        : e(c, i, l, s, u);
     }
-    var i = o.bind(null, !1);
-    return (i.isRequired = o.bind(null, !0)), i;
+    var c = o.bind(null, !1);
+    return (c.isRequired = o.bind(null, !0)), c;
   }
-  function c(e) {
-    return i(function(t, r, n, o, i, c) {
-      var s = t[r];
-      return l(s) !== e
+  function i(e) {
+    return c(function(t, n, r, o, c, i) {
+      var l = t[n];
+      return s(l) !== e
         ? new a(
             'Invalid ' +
               o +
               ' `' +
-              i +
+              c +
               '` of type `' +
-              u(s) +
+              u(l) +
               '` supplied to `' +
-              n +
+              r +
               '`, expected `' +
               e +
               '`.'
@@ -948,7 +886,7 @@ var ne = function(e, t) {
         : null;
     });
   }
-  function s(t) {
+  function l(t) {
     switch (typeof t) {
       case 'number':
       case 'string':
@@ -957,28 +895,28 @@ var ne = function(e, t) {
       case 'boolean':
         return !t;
       case 'object':
-        if (Array.isArray(t)) return t.every(s);
+        if (Array.isArray(t)) return t.every(l);
         if (null === t || e(t)) return !0;
-        var n = (function(e) {
-          var t = e && ((r && e[r]) || e['@@iterator']);
+        var r = (function(e) {
+          var t = e && ((n && e[n]) || e['@@iterator']);
           if ('function' == typeof t) return t;
         })(t);
-        if (!n) return !1;
+        if (!r) return !1;
         var o,
-          a = n.call(t);
-        if (n !== t.entries) {
-          for (; !(o = a.next()).done; ) if (!s(o.value)) return !1;
+          a = r.call(t);
+        if (r !== t.entries) {
+          for (; !(o = a.next()).done; ) if (!l(o.value)) return !1;
         } else
           for (; !(o = a.next()).done; ) {
-            var i = o.value;
-            if (i && !s(i[1])) return !1;
+            var c = o.value;
+            if (c && !l(c[1])) return !1;
           }
         return !0;
       default:
         return !1;
     }
   }
-  function l(e) {
+  function s(e) {
     var t = typeof e;
     return Array.isArray(e)
       ? 'array'
@@ -997,7 +935,7 @@ var ne = function(e, t) {
   }
   function u(e) {
     if (null == e) return '' + e;
-    var t = l(e);
+    var t = s(e);
     if ('object' === t) {
       if (e instanceof Date) return 'date';
       if (e instanceof RegExp) return 'regexp';
@@ -1020,34 +958,34 @@ var ne = function(e, t) {
   }
   return (
     (a.prototype = Error.prototype),
-    (n.checkPropTypes = Z),
-    (n.resetWarningCache = Z.resetWarningCache),
-    (n.PropTypes = n),
-    n
+    (r.checkPropTypes = Y),
+    (r.resetWarningCache = Y.resetWarningCache),
+    (r.PropTypes = r),
+    r
   );
 };
-function oe() {}
-function ae() {}
-ae.resetWarningCache = oe;
-var ie = b(function(e) {
+function K() {}
+function ee() {}
+ee.resetWarningCache = K;
+var te = p(function(e) {
     if ('production' !== process.env.NODE_ENV) {
-      var t = H;
-      e.exports = ne(t.isElement, !0);
+      var t = A;
+      e.exports = Q(t.isElement, !0);
     } else
       e.exports = (function() {
-        function e(e, t, r, n, o, a) {
-          if (a !== Y) {
-            var i = new Error(
+        function e(e, t, n, r, o, a) {
+          if (a !== H) {
+            var c = new Error(
               'Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types'
             );
-            throw ((i.name = 'Invariant Violation'), i);
+            throw ((c.name = 'Invariant Violation'), c);
           }
         }
         function t() {
           return e;
         }
         e.isRequired = e;
-        var r = {
+        var n = {
           array: e,
           bool: e,
           func: e,
@@ -1066,54 +1004,123 @@ var ie = b(function(e) {
           oneOfType: t,
           shape: t,
           exact: t,
-          checkPropTypes: ae,
-          resetWarningCache: oe,
+          checkPropTypes: ee,
+          resetWarningCache: K,
         };
-        return (r.PropTypes = r), r;
+        return (n.PropTypes = n), n;
       })();
   }),
-  ce = {
-    backgroundHover: 'rgba(0, 0, 0, 0.15)',
-    color: '#000000',
-    progressRadius: 2,
-    progressSize: 5,
-    taskRadius: 4,
-    titleFontSize: 20,
-  },
-  se = ie.oneOf(['top', 'bottom', 'both']),
-  le = ie.shape({
-    color: ie.string,
-    progressRadius: ie.oneOfType([ie.number, ie.string]),
-    progressSize: ie.oneOfType([ie.number, ie.string]),
-    titleFontSize: ie.oneOfType([ie.number, ie.string]),
-  }),
-  ue = ie.oneOfType([ie.string, ie.bool]),
-  fe = ie.shape({ Checked: ie.node.isRequired, Unchecked: ie.node.isRequired }),
-  pe = ie.shape({
-    checked: ie.bool.isRequired,
-    id: ie.oneOfType([ie.string, ie.bool]).isRequired,
-    label: ie.string.isRequired,
-  }),
-  de = ie.arrayOf(pe),
-  me = function(e) {
-    return e;
-  },
-  ye = function(e) {
+  ne =
+    (te.oneOf(['top', 'bottom', 'both']),
+    te.shape({
+      color: te.string,
+      progressRadius: te.oneOfType([te.number, te.string]),
+      progressSize: te.oneOfType([te.number, te.string]),
+      titleFontSize: te.oneOfType([te.number, te.string]),
+    }),
+    te.oneOfType([te.string, te.bool]),
+    te.shape({ Checked: te.node.isRequired, Unchecked: te.node.isRequired }),
+    te.shape({
+      checked: te.bool.isRequired,
+      id: te.oneOfType([te.string, te.bool]).isRequired,
+      label: te.string.isRequired,
+    })),
+  re =
+    (te.arrayOf(ne),
+    function(e) {
+      return e;
+    });
+function oe(e, t) {
+  (null == t || t > e.length) && (t = e.length);
+  for (var n = 0, r = new Array(t); n < t; n++) r[n] = e[n];
+  return r;
+}
+function ae(e, t) {
+  if (e) {
+    if ('string' == typeof e) return oe(e, t);
+    var n = Object.prototype.toString.call(e).slice(8, -1);
+    return (
+      'Object' === n && e.constructor && (n = e.constructor.name),
+      'Map' === n || 'Set' === n
+        ? Array.from(n)
+        : 'Arguments' === n ||
+          /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)
+        ? oe(e, t)
+        : void 0
+    );
+  }
+}
+function ce(e) {
+  return (
+    (function(e) {
+      if (Array.isArray(e)) return oe(e);
+    })(e) ||
+    (function(e) {
+      if ('undefined' != typeof Symbol && Symbol.iterator in Object(e))
+        return Array.from(e);
+    })(e) ||
+    ae(e) ||
+    (function() {
+      throw new TypeError(
+        'Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.'
+      );
+    })()
+  );
+}
+var ie = function(e) {
     var t = e.filter(function(e) {
         return e.checked;
       }),
-      r = e.filter(function(e) {
+      n = e.filter(function(e) {
         return !e.checked;
       });
-    return [].concat(m(r), m(t));
+    return [].concat(ce(n), ce(t));
   },
-  he = function(e) {
+  le = function(e) {
     return e.filter(function(e) {
       return !e.checked;
     });
-  },
-  be = ''.concat('napper-todolist', '-checker'),
-  ve = n({
+  };
+function se(e, t) {
+  return (
+    (function(e) {
+      if (Array.isArray(e)) return e;
+    })(e) ||
+    (function(e, t) {
+      if ('undefined' != typeof Symbol && Symbol.iterator in Object(e)) {
+        var n = [],
+          r = !0,
+          o = !1,
+          a = void 0;
+        try {
+          for (
+            var c, i = e[Symbol.iterator]();
+            !(r = (c = i.next()).done) &&
+            (n.push(c.value), !t || n.length !== t);
+            r = !0
+          );
+        } catch (e) {
+          (o = !0), (a = e);
+        } finally {
+          try {
+            r || null == i.return || i.return();
+          } finally {
+            if (o) throw a;
+          }
+        }
+        return n;
+      }
+    })(e, t) ||
+    ae(e, t) ||
+    (function() {
+      throw new TypeError(
+        'Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.'
+      );
+    })()
+  );
+}
+var ue = ''.concat('napper-todolist', '-checker'),
+  fe = r({
     btn: function(e) {
       return {
         alignItems: 'flex-start',
@@ -1126,47 +1133,46 @@ var ie = b(function(e) {
     container: { marginBottom: 12 },
     lbl: {},
   }),
-  ge = function(n) {
-    var a = n.allChecked,
-      i = n.onChange,
-      c = o(),
-      l = ve({ theme: c }),
-      u = d(t(!1), 2),
-      f = u[0],
-      p = u[1];
+  pe = function(r) {
+    var a = r.allChecked,
+      c = r.onChange,
+      i = o(),
+      l = fe({ theme: i }),
+      s = se(t(!1), 2),
+      u = s[0],
+      f = s[1];
     return (
-      r(
+      n(
         function() {
-          a !== f && p(a);
+          a !== u && f(a);
         },
-        [a, f]
+        [a, u]
       ),
       e.createElement(
         'div',
-        { className: s(be, l.container) },
+        { className: ''.concat(ue, ' ').concat(l.container) },
         e.createElement(
           'button',
           {
-            className: s(''.concat(be, '-btn'), l.btn),
+            className: ''.concat(ue, '-btn ').concat(l.btn),
             type: 'button',
             onClick: function() {
-              var e = !f;
-              p(e), i(e);
+              var e = !u;
+              f(e), c(e);
             },
           },
           e.createElement(
             'div',
-            { className: s(''.concat(be, '-lbl'), l.lbl) },
-            !f && e.createElement('span', null, 'Check all'),
-            f && e.createElement('span', null, 'Uncheck all')
+            { className: ''.concat(ue, '-lbl ').concat(l.lbl) },
+            !u && e.createElement('span', null, 'Check all'),
+            u && e.createElement('span', null, 'Uncheck all')
           )
         )
       )
     );
-  };
-ge.propTypes = { allChecked: ie.bool.isRequired, onChange: ie.func.isRequired };
-var we = ''.concat('napper-todolist', '-counter'),
-  Ee = n({
+  },
+  de = ''.concat('napper-todolist', '-counter'),
+  me = r({
     container: function(e) {
       return {
         color: e.theme.color,
@@ -1179,28 +1185,27 @@ var we = ''.concat('napper-todolist', '-counter'),
     spl: {},
     ttl: {},
   }),
-  Oe = e.memo(function(t) {
-    var r = t.tasks,
-      n = o(),
-      a = Ee({ theme: n }),
-      i = (r && r.length) || 0,
-      c =
-        (r &&
-          r.filter(function(e) {
+  ye = e.memo(function(t) {
+    var n = t.tasks,
+      r = o(),
+      a = me({ theme: r }),
+      c = (n && n.length) || 0,
+      i =
+        (n &&
+          n.filter(function(e) {
             return e.checked;
           }).length) ||
         0;
     return e.createElement(
       'div',
-      { className: s(we, a.container) },
-      e.createElement('span', { className: s(''.concat(we, '-cpt')) }, c),
-      e.createElement('span', { className: s(''.concat(we, '-spl')) }, '/'),
-      e.createElement('span', { className: s(''.concat(we, '-ttl')) }, i)
+      { className: ''.concat(de, ' ').concat(a.container) },
+      e.createElement('span', { className: ''.concat(de, '-cpt') }, i),
+      e.createElement('span', { className: ''.concat(de, '-spl') }, '/'),
+      e.createElement('span', { className: ''.concat(de, '-ttl') }, c)
     );
-  });
-Oe.propTypes = { tasks: de.isRequired };
-var ke = ''.concat('napper-todolist', '-progress'),
-  Se = n({
+  }),
+  he = ''.concat('napper-todolist', '-progress'),
+  be = r({
     bar: function(e) {
       var t = e.theme;
       return {
@@ -1236,40 +1241,40 @@ var ke = ''.concat('napper-todolist', '-progress'),
       transition: 'left 0.5s',
     },
   }),
-  xe = e.memo(function(t) {
-    var r = t.tasks,
-      n = o(),
-      a = Se({ theme: n }),
-      i = (r && r.length) || 0,
-      c =
+  ve = e.memo(function(t) {
+    var n = t.tasks,
+      r = o(),
+      a = be({ theme: r }),
+      c = (n && n.length) || 0,
+      i =
         (100 *
-          ((r &&
-            r.filter(function(e) {
+          ((n &&
+            n.filter(function(e) {
               return e.checked;
             }).length) ||
             0)) /
-        i,
-      l = c > 0 ? '0 2px 2px 0' : 2;
+        c,
+      l = i > 0 ? '0 2px 2px 0' : 2;
     return e.createElement(
       'div',
-      { className: s(ke, a.container) },
+      { className: ''.concat(he, ' ').concat(a.container) },
       e.createElement(
         'div',
-        { className: s(''.concat(ke, '-bar'), a.bar) },
+        { className: ''.concat(he, '-bar ').concat(a.bar) },
         e.createElement('div', {
-          className: s(''.concat(ke, '-trk'), a.trk),
-          style: { borderRadius: l, left: ''.concat(c, '%') },
+          className: ''.concat(he, '-trk ').concat(a.trk),
+          style: { borderRadius: l, left: ''.concat(i, '%') },
         }),
         e.createElement('div', {
-          className: s(''.concat(ke, '-tmb'), a.tmb),
-          style: { width: ''.concat(c, '%') },
+          className: ''.concat(he, '-tmb ').concat(a.tmb),
+          style: { width: ''.concat(i, '%') },
         })
       )
     );
   });
-(xe.defaultProps = {}), (xe.propTypes = { tasks: de.isRequired });
-var Ce = ''.concat('napper-todolist', '-footer'),
-  je = n({
+ve.defaultProps = {};
+var ge = ''.concat('napper-todolist', '-footer'),
+  we = r({
     container: { display: 'flex', flex: '0 1', paddingTop: 12 },
     wrp: {
       alignItems: 'center',
@@ -1279,28 +1284,23 @@ var Ce = ''.concat('napper-todolist', '-footer'),
       width: '100%',
     },
   }),
-  Pe = e.memo(function(t) {
-    var r = t.showCounter,
-      n = t.showProgress,
+  Ee = e.memo(function(t) {
+    var n = t.showCounter,
+      r = t.showProgress,
       o = t.tasks,
-      a = je();
+      a = we();
     return e.createElement(
       'div',
-      { className: s(Ce, a.container) },
+      { className: ''.concat(ge, ' ').concat(a.container) },
       e.createElement(
         'div',
-        { className: s(''.concat(Ce, '-wrp'), a.wrp) },
-        n && e.createElement(xe, { tasks: o }),
-        r && e.createElement(Oe, { tasks: o })
+        { className: ''.concat(ge, '-wrp ').concat(a.wrp) },
+        r && e.createElement(ve, { tasks: o }),
+        n && e.createElement(ye, { tasks: o })
       )
     );
-  });
-Pe.propTypes = {
-  showCounter: ie.bool.isRequired,
-  showProgress: ie.bool.isRequired,
-  tasks: de.isRequired,
-};
-var Te = e.memo(function() {
+  }),
+  Oe = e.memo(function() {
     return e.createElement(
       'svg',
       {
@@ -1315,7 +1315,7 @@ var Te = e.memo(function() {
       e.createElement('path', { d: 'M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z' })
     );
   }),
-  Re = e.memo(function() {
+  Se = e.memo(function() {
     return e.createElement(
       'svg',
       {
@@ -1333,7 +1333,7 @@ var Te = e.memo(function() {
       })
     );
   }),
-  Ne = e.memo(function() {
+  xe = e.memo(function() {
     return e.createElement(
       'svg',
       {
@@ -1355,7 +1355,7 @@ var Te = e.memo(function() {
       })
     );
   }),
-  $e = e.memo(function() {
+  ke = e.memo(function() {
     return e.createElement(
       'svg',
       {
@@ -1373,8 +1373,8 @@ var Te = e.memo(function() {
       })
     );
   }),
-  Ie = ''.concat('napper-todolist', '-header'),
-  Me = n({
+  Ce = ''.concat('napper-todolist', '-header'),
+  je = r({
     btm: {},
     container: {
       display: 'flex',
@@ -1394,52 +1394,51 @@ var Te = e.memo(function() {
       justifyContent: 'space-between',
     },
   }),
-  Ae = e.memo(function(t) {
-    var r = t.createHandler,
-      n = t.showCounter,
-      a = t.showProgress,
+  Pe = e.memo(function(t) {
+    var n = t.createHandler,
+      r = t.parentId,
+      a = t.showCounter,
+      c = t.showProgress,
       i = t.tasks,
-      c = t.title,
-      l = o(),
-      u = Me({ theme: l });
+      l = t.title,
+      s = o(),
+      u = je({ theme: s });
     return e.createElement(
       'div',
-      { className: s(Ie, u.container) },
+      { className: ''.concat(Ce, ' ').concat(u.container) },
       e.createElement(
         'div',
-        { className: s(''.concat(Ie, '-wrp'), u.wrp) },
-        r &&
+        { className: ''.concat(Ce, '-wrp ').concat(u.wrp) },
+        n &&
           e.createElement(
             'button',
-            { type: 'button', onClick: r },
-            e.createElement(Te, null)
+            {
+              type: 'button',
+              onClick: function() {
+                return n(r);
+              },
+            },
+            e.createElement(Oe, null)
           ),
-        c &&
+        l &&
           e.createElement(
             'span',
-            { className: s(''.concat(Ie, '-tit'), u.tit) },
-            c
+            { className: ''.concat(Ce, '-tit ').concat(u.tit) },
+            l
           ),
-        n && e.createElement(Oe, { tasks: i })
+        a && e.createElement(ye, { tasks: i })
       ),
-      a &&
+      c &&
         e.createElement(
           'div',
-          { className: s(''.concat(Ie, '-btm'), u.btm) },
-          e.createElement(xe, { tasks: i })
+          { className: ''.concat(Ce, '-btm ').concat(u.btm) },
+          e.createElement(ve, { tasks: i })
         )
     );
   });
-(Ae.defaultProps = { createHandler: null }),
-  (Ae.propTypes = {
-    createHandler: ie.func,
-    showCounter: ie.bool.isRequired,
-    showProgress: ie.bool.isRequired,
-    tasks: de.isRequired,
-    title: ue.isRequired,
-  });
-var ze = ''.concat('napper-todolist', '-task'),
-  De = n({
+Pe.defaultProps = { createHandler: null, parentId: null };
+var Ne = ''.concat('napper-todolist', '-task'),
+  Ie = r({
     btn: function(e) {
       return {
         alignItems: 'flex-start',
@@ -1467,85 +1466,79 @@ var ze = ''.concat('napper-todolist', '-task'),
       };
     },
   }),
-  qe = function(r) {
-    var n = r.Icons,
-      a = r.checked,
-      i = r.id,
-      c = r.label,
-      l = r.onChange,
-      u = r.onDelete,
-      f = o(),
-      p = De({ theme: f }),
-      m = d(t(!1), 2),
-      y = m[0],
-      h = m[1],
-      b = y && u;
+  Te = function(n) {
+    var r = n.Icons,
+      a = n.checked,
+      c = n.id,
+      i = n.label,
+      l = n.onChange,
+      s = n.onDelete,
+      u = o(),
+      f = Ie({ theme: u }),
+      p = se(t(!1), 2),
+      d = p[0],
+      m = p[1],
+      y = d && s;
     return e.createElement(
       'div',
       {
-        className: s(ze, p.task),
-        'data-id': 'napper-todolist-task-'.concat(i),
+        className: ''.concat(Ne, ' ').concat(f.task),
+        'data-id': 'napper-todolist-task-'.concat(c),
         onMouseEnter: function() {
-          return h(!0);
+          return m(!0);
         },
         onMouseLeave: function() {
-          return h(!1);
+          return m(!1);
         },
       },
       e.createElement(
         'button',
         {
-          className: s(''.concat(ze, '-btn'), p.btn),
+          className: ''.concat(Ne, '-btn ').concat(f.btn),
           type: 'button',
           onClick: function() {
-            return l(i, !a);
+            return l(c, !a);
           },
         },
         e.createElement(
           'div',
-          { className: s(''.concat(ze, '-ckb'), p.ckb) },
-          a && n.Checked,
-          !a && n.Unchecked
+          { className: ''.concat(Ne, '-ckb ').concat(f.ckb) },
+          a && r.Checked,
+          !a && r.Unchecked
         ),
         e.createElement(
           'div',
-          { className: s(''.concat(ze, '-lbl'), p.lbl) },
-          e.createElement('span', null, c)
+          { className: ''.concat(Ne, '-lbl ').concat(f.lbl) },
+          e.createElement('span', null, i)
         )
       ),
-      b &&
+      y &&
         e.createElement(
           'button',
           {
-            className: s(''.concat(ze, '-dlt'), p.dlt),
+            className: ''.concat(Ne, '-dlt ').concat(f.dlt),
             type: 'button',
             onClick: function() {
-              return u(i);
+              return s(c);
             },
           },
-          e.createElement(Re, null)
+          e.createElement(Se, null)
         )
     );
   };
-(qe.defaultProps = {
+Te.defaultProps = {
   Icons: {
-    Checked: e.createElement(Ne, null),
-    Unchecked: e.createElement($e, null),
+    Checked: e.createElement(xe, null),
+    Unchecked: e.createElement(ke, null),
   },
-}),
-  (qe.propTypes = {
-    Icons: fe,
-    checked: ie.bool.isRequired,
-    id: ie.string.isRequired,
-    label: ie.string.isRequired,
-    onChange: ie.func.isRequired,
-    onDelete: ie.oneOfType([ie.bool, ie.func]).isRequired,
-  });
-var _e = ''.concat('napper-todolist', '-tasks'),
-  Ve = n({
+};
+var $e = ''.concat('napper-todolist', '-tasks'),
+  Re = r({
     container: { display: 'flex', flex: 1, position: 'relative' },
     wrp: {
       bottom: 0,
+      display: 'flex',
+      flexDirection: 'column',
       left: 0,
       overflowX: 'hidden',
       overflowY: 'auto',
@@ -1553,45 +1546,39 @@ var _e = ''.concat('napper-todolist', '-tasks'),
       right: 0,
       top: 0,
     },
-  });
-var He = function(t) {
-  var r = t.onChange,
-    n = t.onDelete,
-    o = t.render,
-    a = t.tasks,
-    i = Ve();
-  return e.createElement(
-    'div',
-    { className: s(_e, i.container) },
-    e.createElement(
+  }),
+  Me = function(t) {
+    var n = t.onChange,
+      r = t.onDelete,
+      o = t.render,
+      a = t.tasks,
+      c = Re();
+    return e.createElement(
       'div',
-      { className: s(''.concat(_e, '-wrp'), i.wrp) },
-      a.map(function(e) {
-        return o(e, r, n);
-      })
-    )
-  );
-};
-(He.defaultProps = {
-  render: function(t, r, n) {
-    return e.createElement(qe, {
+      { className: ''.concat($e, ' ').concat(c.container) },
+      e.createElement(
+        'div',
+        { className: ''.concat($e, '-wrp ').concat(c.wrp) },
+        a.map(function(e) {
+          return o(e, n, r);
+        })
+      )
+    );
+  };
+Me.defaultProps = {
+  render: e.memo(function(t, n, r) {
+    return e.createElement(Te, {
       key: t.id,
       checked: t.checked,
       id: t.id,
       label: t.label,
-      onChange: r,
-      onDelete: n,
+      onChange: n,
+      onDelete: r,
     });
-  },
-}),
-  (He.propTypes = {
-    onChange: ie.func.isRequired,
-    onDelete: ie.oneOfType([ie.bool, ie.func]).isRequired,
-    render: ie.func,
-    tasks: de.isRequired,
-  });
-var Fe = ''.concat('napper-todolist', '-container'),
-  Le = n({
+  }),
+};
+var ze = ''.concat('napper-todolist', '-container'),
+  Ae = r({
     container: {
       height: '100%',
       maxHeight: '100%',
@@ -1612,101 +1599,102 @@ var Fe = ''.concat('napper-todolist', '-container'),
       width: '100%',
     },
   }),
-  We = e.memo(function(t) {
-    var r,
-      n = t.completedAtBottom,
+  De = e.memo(function(t) {
+    var n,
+      r = t.completedAtBottom,
       o = t.counterPosition,
       a = t.id,
-      i = t.onChange,
-      c = t.onCreateClick,
+      c = t.onChange,
+      i = t.onCreateClick,
       l = t.onDelete,
-      f = t.onToggleAll,
-      p = t.order,
-      d = t.orderBy,
-      y = t.showCompleted,
-      h = t.showCounter,
-      b = t.showProgress,
-      v = t.tasks,
-      g = t.title,
-      w = Le(),
-      E = (function() {
-        for (var e = arguments.length, t = new Array(e), r = 0; r < e; r++)
-          t[r] = arguments[r];
+      s = t.onToggleAll,
+      u = t.order,
+      f = t.orderBy,
+      p = t.showCompleted,
+      d = t.showCounter,
+      m = t.showProgress,
+      y = t.tasks,
+      h = t.title,
+      b = Ae(),
+      v = (function() {
+        for (var e = arguments.length, t = new Array(e), n = 0; n < e; n++)
+          t[n] = arguments[n];
         return function(e) {
           return t.reduceRight(function(e, t) {
             return t(e);
           }, e);
         };
       })(
-        (!y && he) || me,
-        (n && ye) || me,
-        (p &&
+        (!p && le) || re,
+        (r && ie) || re,
+        (u &&
           (function(e, t) {
-            return function(r) {
-              var n = m(r);
+            return function(n) {
+              var r = ce(n);
               return (
-                n.sort(function(t, r) {
-                  var n = t[e],
-                    o = r[e];
-                  return n && o
-                    ? (n = n.toString().toLocaleLowerCase()) >
+                r.sort(function(t, n) {
+                  var r = t[e],
+                    o = n[e];
+                  return r && o
+                    ? (r = r.toString().toLocaleLowerCase()) >
                       (o = o.toString().toLocaleLowerCase())
                       ? 1
-                      : n < o
+                      : r < o
                       ? -1
                       : 0
                     : 0;
                 }),
-                'desc' === t && n.reverse(),
-                n
+                'desc' === t && r.reverse(),
+                r
               );
             };
-          })(d, p)) ||
-          me
-      )(v),
-      O = (function(e) {
+          })(f, u)) ||
+          re
+      )(y),
+      g = (function(e) {
         return (
           e.filter(function(e) {
             return e.checked;
           }).length >= e.length
         );
-      })(v),
-      k = ((r = o), h && ('top' === r || 'both' === r)),
-      S = (function(e, t) {
+      })(y),
+      w = ((n = o), d && ('top' === n || 'both' === n)),
+      E = (function(e, t) {
         return t && ('top' === e || 'both' === e);
-      })(o, b),
-      x = (function(e, t) {
+      })(o, m),
+      O = (function(e, t) {
         return t && ('bottom' === e || 'both' === e);
-      })(o, h),
-      C = (function(e, t) {
+      })(o, d),
+      S = (function(e, t) {
         return t && ('bottom' === e || 'both' === e);
-      })(o, b),
-      j = {};
+      })(o, m),
+      x = {};
     return (
-      a && (j.id = a),
+      a && (x.id = a),
       e.createElement(
         'div',
-        u({}, j, { className: s(Fe, w.container) }),
+        Object.assign({}, x, {
+          className: ''.concat(ze, ' ').concat(b.container),
+        }),
         e.createElement(
           'div',
-          { className: s(''.concat(Fe, '-wrp'), w.wrp) },
-          e.createElement(Ae, {
-            showCounter: k,
-            createHandler: function() {
-              return c(a);
-            },
-            showProgress: S,
-            tasks: v,
-            title: g,
+          { className: ''.concat(ze, '-wrp ').concat(b.wrp) },
+          e.createElement(Pe, {
+            parentId: a,
+            showCounter: w,
+            createHandler: i || null,
+            showProgress: E,
+            tasks: y,
+            title: h,
           }),
-          f && e.createElement(ge, { allChecked: O, onChange: f }),
-          e.createElement(He, { tasks: E, onChange: i, onDelete: l }),
-          e.createElement(Pe, { showCounter: x, showProgress: C, tasks: v })
+          s && e.createElement(pe, { allChecked: g, onChange: s }),
+          e.createElement(Me, { tasks: v, onChange: c, onDelete: l }),
+          e.createElement(Ee, { showCounter: O, showProgress: S, tasks: y })
         )
       )
     );
   });
-(We.defaultProps = {
+De.defaultProps = {
   completedAtBottom: !0,
   counterPosition: 'bottom',
   id: !1,
@@ -1719,53 +1707,36 @@ var Fe = ''.concat('napper-todolist', '-container'),
   showProgress: !1,
   tasks: [],
   title: !1,
-}),
-  (We.propTypes = {
-    completedAtBottom: ie.bool,
-    counterPosition: se,
-    id: ie.oneOfType([ie.bool, ie.string]),
-    onChange: ie.func.isRequired,
-    onCreateClick: ie.func.isRequired,
-    onDelete: ie.oneOfType([ie.bool, ie.func]),
-    onToggleAll: ie.oneOfType([ie.bool, ie.func]),
-    order: ie.oneOf([!1, 'desc', 'asc']),
-    orderBy: ie.oneOf(['label', 'id', 'mtime', 'ctime']),
-    showCompleted: ie.bool,
-    showCounter: ie.bool,
-    showProgress: ie.bool,
-    tasks: de,
-    title: ue,
-  });
-var Be = ''.concat('napper-todolist', '-'),
-  Ue = function(t) {
-    var r = t.jssMinifyId,
-      n = t.theme,
-      o = p(t, ['jssMinifyId', 'theme']),
-      s = (function(e) {
+};
+var _e = ''.concat('napper-todolist', '-'),
+  Ve = function(t) {
+    var n = t.jssMinifyId,
+      r = t.theme,
+      o = u(t, ['jssMinifyId', 'theme']),
+      p = (function(e) {
         for (var t = 1; t < arguments.length; t++) {
-          var r = null != arguments[t] ? arguments[t] : {};
+          var n = null != arguments[t] ? arguments[t] : {};
           t % 2
-            ? f(Object(r), !0).forEach(function(t) {
-                l(e, t, r[t]);
+            ? s(Object(n), !0).forEach(function(t) {
+                l(e, t, n[t]);
               })
             : Object.getOwnPropertyDescriptors
-            ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(r))
-            : f(Object(r)).forEach(function(t) {
+            ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(n))
+            : s(Object(n)).forEach(function(t) {
                 Object.defineProperty(
                   e,
                   t,
-                  Object.getOwnPropertyDescriptor(r, t)
+                  Object.getOwnPropertyDescriptor(n, t)
                 );
               });
         }
         return e;
-      })({}, ce, {}, n);
+      })({}, f, {}, r);
     return e.createElement(
       a,
-      { classNamePrefix: Be, id: { minify: r }, jss: i },
-      e.createElement(c, { theme: s }, e.createElement(We, o))
+      { classNamePrefix: _e, id: { minify: n }, jss: c },
+      e.createElement(i, { theme: p }, e.createElement(De, o))
     );
   };
-(Ue.defaultProps = { jssMinifyId: !0, theme: {} }),
-  (Ue.propTypes = { jssMinifyId: ie.bool, theme: le });
-export default Ue;
+Ve.defaultProps = { jssMinifyId: !0, theme: {} };
+export default Ve;
