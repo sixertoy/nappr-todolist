@@ -1,9 +1,9 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { FaPlusSquare } from 'react-icons/fa';
 import { createUseStyles, useTheme } from 'react-jss';
 
+import { NapperTodoListIconPlus } from './assets';
 import { CLASS_NAME_PREFIX } from './core/constants';
 import { TasksType, TitleType } from './prop-types';
 import NapperTodoListCounterComponent from './todolist-counter';
@@ -41,7 +41,7 @@ const NapperTodoListHeaderComponent = React.memo(
         <div className={classnames(`${BASE_CLASS}-wrp`, classes.wrp)}>
           {createHandler && (
             <button type="button" onClick={createHandler}>
-              <FaPlusSquare />
+              <NapperTodoListIconPlus />
             </button>
           )}
           {title && (
