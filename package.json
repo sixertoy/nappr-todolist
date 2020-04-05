@@ -8,7 +8,9 @@
   "main": "./dist/bundle.cjs.js",
   "module": "./dist/bundle.esm.js",
   "files": [
-    "./dist"
+    ".size-snapshot.json",
+    "./dist/bundle.cjs.js",
+    "./dist/bundle.esm.js"
   ],
   "homepage": "https://github.com/sixertoy/nappr-todolist",
   "repository": {

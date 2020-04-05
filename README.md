@@ -1,9 +1,9 @@
-# NAPPER TODOLIST
+# NAPPR TODOLIST
 
 ## Install
 
 ```bash
-yarn add https://github.com/sixertoy/napper-todolist
+yarn add @nappr/nappr-todolist
 ```
 
 ## Dependencies
