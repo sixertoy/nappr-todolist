@@ -1,7 +1,12 @@
 {
   "dist/bundle.min.js": {
-    "bundled": 21680,
-    "minified": 11010,
-    "gzipped": 3512
+    "bundled": 20464,
+    "minified": 15214,
+    "gzipped": 3908
+  },
+  "dist/bundle.cjs.js": {
+    "bundled": 27039,
+    "minified": 18746,
+    "gzipped": 4737
   }
 }

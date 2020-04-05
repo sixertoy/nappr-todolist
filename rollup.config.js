@@ -1,30 +1,11 @@
 import builtinModules from 'builtin-modules';
-import dotenv from 'dotenv';
 import babel from 'rollup-plugin-babel';
 import commonJS from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
 import { terser } from 'rollup-plugin-terser';
 
-import { dependencies, peerDependencies } from './package.json';
-
-dotenv.config();
-const isDevelopment = process.env.NODE_ENV === 'development';
-
-const babelPluginoptions = { exclude: 'node_modules/**' };
-
-const commonjsPluginoptions = {
-  extensions: ['.js', '.jsx'],
-  include: 'node_modules/**',
-};
-
-const plugins = (umd = false) => [
-  resolve(),
-  babel(babelPluginoptions),
-  commonJS(commonjsPluginoptions),
-  umd ? sizeSnapshot({ printInfo: isDevelopment }) : null,
-  terser({ compress: !isDevelopment, mangle: !isDevelopment }),
-];
+import { dependencies, main, module, peerDependencies } from './package.json';
 
 const external = [
   ...builtinModules,
@@ -32,22 +13,43 @@ const external = [
   ...Object.keys(peerDependencies || {}),
 ];
 
+const babelPluginoptions = {
+  babelrc: true,
+  exclude: 'node_modules/**',
+};
+
+const commonjsPluginoptions = {
+  extensions: ['.js', '.jsx'],
+  include: 'node_modules/**',
+};
+
+const plugins = (usecjs = false) => [
+  resolve(),
+  babel(babelPluginoptions),
+  commonJS(commonjsPluginoptions),
+  usecjs ? sizeSnapshot({ printInfo: true }) : null,
+  terser({ compress: true, mangle: true }),
+];
+
+const configCJS = {
+  input: './src/index.jsx',
+  output: {
+    exports: 'named',
+    file: main,
+    format: 'cjs',
+  },
+};
+
+const configESM = {
+  input: './src/index.jsx',
+  output: {
+    exports: 'named',
+    file: module,
+    format: 'esm',
+  },
+};
+
 export default [
-  {
-    external,
-    input: './src/index.jsx',
-    output: {
-      esModule: false,
-      file: 'dist/bundle.min.js',
-      format: 'umd',
-      name: 'napper-todolist',
-    },
-    plugins: plugins(true),
-  },
-  {
-    external,
-    input: { index: './src/index.jsx' },
-    output: { dir: './lib', format: 'esm' },
-    plugins: plugins(),
-  },
+  { ...configCJS, external, plugins: plugins(true) },
+  { ...configESM, external, plugins: plugins() },
 ];
