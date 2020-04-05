@@ -25,8 +25,8 @@ const commonjsPluginoptions = {
 
 const plugins = (usecjs = false) => [
   resolve(),
-  babel(babelPluginoptions),
   commonJS(commonjsPluginoptions),
+  babel(babelPluginoptions),
   usecjs ? sizeSnapshot({ printInfo: true }) : null,
   terser({ compress: true, mangle: true }),
 ];
