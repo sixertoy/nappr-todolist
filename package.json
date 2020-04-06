@@ -8,8 +8,7 @@
   "main": "lib/nappr-todolist.js",
   "module": "lib/nappr-todolist.es.js",
   "files": [
-    "lib",
-    ".size-snapshot.json"
+    "lib"
   ],
   "homepage": "https://github.com/sixertoy/nappr-todolist",
   "repository": {

@@ -203,3 +203,4 @@ $RECYCLE.BIN/
 lib
 build
 config.build.json
+.size-snapshot.json
