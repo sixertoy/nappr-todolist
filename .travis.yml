@@ -2,12 +2,20 @@ language: node_js
 node_js:
   - '12.13.1'
 
-env:
-  - NODE_ENV=production
+branches:
+  only:
+    - master
 
 cache:
   directories:
     - node_modules
+
+env:
+  - NODE_ENV=production
+  - BABEL_ENV=production
+
+install:
+  - npm install
 # script:
 #   - yarn test --collect-coverage --verbose
 
