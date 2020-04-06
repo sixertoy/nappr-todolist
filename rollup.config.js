@@ -2,6 +2,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import url from '@rollup/plugin-url';
 import svgr from '@svgr/rollup';
+import builtins from 'builtin-modules';
 import babel from 'rollup-plugin-babel';
 import postcss from 'rollup-plugin-postcss';
 import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
@@ -19,6 +20,7 @@ require('dotenv').config();
 const isProduction = process.env.NODE_ENV === 'production';
 
 const external = [
+  builtins,
   ...Object.keys(devDependencies),
   ...Object.keys(peerDependencies),
 ];

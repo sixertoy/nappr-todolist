@@ -19,22 +19,27 @@
     }
   },
   "lib/nappr-todolist.js": {
-    "bundled": 21554,
-    "minified": 14657,
-    "gzipped": 4142
+    "bundled": 20674,
+    "minified": 13881,
+    "gzipped": 3971
   },
   "lib/nappr-todolist.es.js": {
-    "bundled": 20682,
-    "minified": 13826,
-    "gzipped": 4084,
+    "bundled": 19822,
+    "minified": 13065,
+    "gzipped": 3911,
     "treeshaked": {
       "rollup": {
-        "code": 9626,
-        "import_statements": 135
+        "code": 9172,
+        "import_statements": 109
       },
       "webpack": {
-        "code": 12613
+        "code": 12069
       }
     }
+  },
+  "lib/nappr-todolist.min.js": {
+    "bundled": 63155,
+    "minified": 32298,
+    "gzipped": 8997
   }
 }
