@@ -1,4 +1,4 @@
-# NAPPER TODOLIST
+# NAPPR TodoList
 
 ## Install
 
