@@ -59,8 +59,6 @@ App.propTypes = {
 export default App;
 ```
 
-[![Edit nappr-todolist-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/nappr-todolist-example-ie5fj?fontsize=14&hidenavigation=1&theme=dark)
-
 [travis-url]: https://travis-ci.org/sixertoy/nappr-todolist
 [travis-img]: http://img.shields.io/travis/sixertoy/nappr-todolist.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/@nappr/nappr-todolist

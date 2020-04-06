@@ -1,3 +1,0 @@
-# Required Props
-
-# Optionals Props
