@@ -235,19 +235,6 @@ Title of the list
 <NapprTodoList title={false} />
 ```
 
-## Theming
-
-```javascript
-{
-  backgroundHover: 'rgba(0, 0, 0, 0.15)',
-  color: '#000000',
-  progressRadius: 2,
-  progressSize: 5,
-  taskRadius: 4,
-  titleFontSize: 20,
-};
-```
-
 [travis-url]: https://travis-ci.org/sixertoy/nappr-todolist
 [travis-img]: http://img.shields.io/travis/sixertoy/nappr-todolist.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/@nappr/nappr-todolist
