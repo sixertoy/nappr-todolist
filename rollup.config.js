@@ -13,16 +13,19 @@ import {
   peerDependencies,
 } from './package.json';
 
+const { NODE_ENV } = process.env;
+const isProduction = NODE_ENV === 'production';
+
 const output = [
   {
     file: main,
     format: 'cjs',
-    sourcemap: true,
+    sourcemap: isProduction,
   },
   {
     file: module,
     format: 'es',
-    sourcemap: true,
+    sourcemap: isProduction,
   },
 ];
 
@@ -35,7 +38,7 @@ export default {
   output,
   plugins: [
     postcss({
-      minimize: true,
+      minimize: isProduction,
       plugins: [],
       sourceMap: 'inline',
     }),
@@ -48,6 +51,6 @@ export default {
       runtimeHelpers: true,
     }),
     commonjs(),
-    terser(),
+    terser({ compress: isProduction, mangle: isProduction }),
   ],
 };

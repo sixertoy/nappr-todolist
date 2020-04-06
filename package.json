@@ -97,10 +97,10 @@
     "lint:css": "stylelint src/**/*.css",
     "lint": "npm run lint:js && npm run lint:css",
     "docs": "docsify serve docs --port=2999 --no-open",
-    "prebuild": "rm -rf lib",
-    "build": "NODE_ENV=production BABEL_ENV=production rollup -c",
     "predev": "npm run lint",
-    "dev": "NODE_ENV=development BABEL_ENV=development rollup -c -w",
+    "dev": "rollup -c -w",
+    "prebuild": "rm -rf lib",
+    "build": "NODE_ENV=production rollup -c",
     "prepare": "npm run build"
   }
 }
