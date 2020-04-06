@@ -4,6 +4,7 @@ import url from '@rollup/plugin-url';
 import svgr from '@svgr/rollup';
 import babel from 'rollup-plugin-babel';
 import postcss from 'rollup-plugin-postcss';
+import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
 import { terser } from 'rollup-plugin-terser';
 
 import {
@@ -13,44 +14,50 @@ import {
   peerDependencies,
 } from './package.json';
 
-const { NODE_ENV } = process.env;
-const isProduction = NODE_ENV === 'production';
+require('dotenv').config();
+
+const isProduction = process.env.NODE_ENV === 'production';
+
+const external = [
+  ...Object.keys(devDependencies),
+  ...Object.keys(peerDependencies),
+];
+
+const plugins = [
+  postcss({
+    minimize: !isProduction,
+    plugins: [],
+    sourceMap: (isProduction && 'inline') || false,
+  }),
+  url(),
+  svgr(),
+  resolve({ extensions: ['.js', '.jsx'] }),
+  babel({
+    babelrc: true,
+    exclude: ['node_modules/**'],
+    runtimeHelpers: true,
+  }),
+  commonjs(),
+  sizeSnapshot(),
+  terser(),
+];
 
 const output = [
   {
     file: main,
     format: 'cjs',
-    sourcemap: isProduction,
+    sourcemap: !isProduction,
   },
   {
     file: module,
     format: 'es',
-    sourcemap: isProduction,
+    sourcemap: !isProduction,
   },
 ];
 
 export default {
-  external: [
-    ...Object.keys(devDependencies || {}),
-    ...Object.keys(peerDependencies || {}),
-  ],
+  external,
   input: 'src/index.jsx',
   output,
-  plugins: [
-    postcss({
-      minimize: isProduction,
-      plugins: [],
-      sourceMap: 'inline',
-    }),
-    url(),
-    svgr(),
-    resolve({ extensions: ['.js', '.jsx'] }),
-    babel({
-      babelrc: true,
-      exclude: ['node_modules/**'],
-      runtimeHelpers: true,
-    }),
-    commonjs(),
-    terser({ compress: isProduction, mangle: isProduction }),
-  ],
+  plugins,
 };

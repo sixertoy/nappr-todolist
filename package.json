@@ -5,10 +5,11 @@
   "author": "sixertoy <sixertoy.github@gmail.com>",
   "license": "ISC",
   "private": false,
-  "main": "lib/index.js",
-  "module": "lib/index.es.js",
+  "main": "lib/nappr-todolist.js",
+  "module": "lib/nappr-todolist.es.js",
   "files": [
-    "lib"
+    "lib",
+    ".size-snapshot.json"
   ],
   "homepage": "https://github.com/sixertoy/nappr-todolist",
   "repository": {
@@ -52,6 +53,7 @@
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "babel-preset-react-app": "^9.1.2",
     "docsify": "^4.10.2",
+    "dotenv": "^8.2.0",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.10.0",
@@ -100,7 +102,7 @@
     "predev": "npm run lint",
     "dev": "rollup -c -w",
     "prebuild": "rm -rf lib",
-    "build": "NODE_ENV=production rollup -c",
+    "build": "rollup -c",
     "prepare": "npm run build"
   }
 }

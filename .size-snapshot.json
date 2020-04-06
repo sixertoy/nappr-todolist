@@ -1,0 +1,40 @@
+{
+  "lib/index.js": {
+    "bundled": 29469,
+    "minified": 20203,
+    "gzipped": 4696
+  },
+  "lib/index.es.js": {
+    "bundled": 28597,
+    "minified": 19372,
+    "gzipped": 4639,
+    "treeshaked": {
+      "rollup": {
+        "code": 14015,
+        "import_statements": 135
+      },
+      "webpack": {
+        "code": 17289
+      }
+    }
+  },
+  "lib/nappr-todolist.js": {
+    "bundled": 21554,
+    "minified": 14657,
+    "gzipped": 4142
+  },
+  "lib/nappr-todolist.es.js": {
+    "bundled": 20682,
+    "minified": 13826,
+    "gzipped": 4084,
+    "treeshaked": {
+      "rollup": {
+        "code": 9626,
+        "import_statements": 135
+      },
+      "webpack": {
+        "code": 12613
+      }
+    }
+  }
+}
