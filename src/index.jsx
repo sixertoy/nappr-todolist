@@ -1,3 +1,6 @@
+/* eslint
+  react/jsx-props-no-spreading: 0
+*/
 import './core/styles/index.css';
 
 import PropTypes from 'prop-types';
@@ -19,7 +22,6 @@ const NapprTodoList = props => {
       id={{ minify: jssMinifyId }}
       jss={jss}>
       <ThemeProvider theme={mergedTheme}>
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <NapprTodoListComponent {...rest} />
       </ThemeProvider>
     </JssProvider>
