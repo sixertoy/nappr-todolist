@@ -1,9 +1,11 @@
 module.exports = {
   collectCoverageFrom: [
-    '<rootDir>/lib/**.{js}',
+    '<rootDir>/src/**.{js}',
     '!<rootDir>/node_modules/',
+    '!<rootDir>/lib/',
     '!<rootDir>/dist/',
     '!<rootDir>/docs/',
+    '!<rootDir>/demo/',
   ],
   moduleFileExtensions: ['js'],
   // setupFiles: ['<rootDir>/jest-polyfill.js', '<rootDir>/jest.setup.js'],

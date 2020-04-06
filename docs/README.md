@@ -16,12 +16,12 @@ yarn add react-jss
 ## Sample
 
 ```javascript
-import PropTypes from "prop-types";
-import React, { useState } from "react";
-import { v1 as uuidv1 } from "uuid";
-import NapprTodoList from "@nappr/nappr-todolist";
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { v1 as uuidv1 } from 'uuid';
+import NapprTodoList from '@nappr/nappr-todolist';
 
-const ikea = require("ikea-name-generator");
+const ikea = require('ikea-name-generator');
 
 const App = ({ items }) => {
   const listId = uuidv1();
@@ -53,7 +53,7 @@ const App = ({ items }) => {
               const newTask = {
                 checked: false,
                 id: uuidv1(),
-                label: ikea.getName()
+                label: ikea.getName(),
               };
               const next = [...tasks, newTask];
               updateTasks(next);
@@ -76,12 +76,12 @@ App.defaultProps = {
   items: [...Array(10).keys()].map(() => ({
     checked: false,
     id: uuidv1(),
-    label: ikea.getName()
-  }))
+    label: ikea.getName(),
+  })),
 };
 
 App.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape())
+  items: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 export default App;
@@ -91,36 +91,148 @@ export default App;
 
 **Required Props**
 
+### `tasks*: array`
+
+An array of task objects
+
 ```javascript
-{
-  onChange: func*,
-  tasks: [{
-    checked: bool*,
-    id: oneOf(string, number)*,
-    label: string*
-  }],
-}
+<NapprTodoList
+  tasks={[
+    {
+      label: string,
+      id: string|number,
+      checked: bool,
+    },
+    ...
+  ]}
+/>
+```
+
+### `onChange*: func`
+
+Callback function triggered when the checked value of the list has changed
+
+```javascript
+<NapprTodoList
+  onChange={(
+    clickedTaskId: string | number,
+    clickedtaskCheckValue: boolean,
+    listId?: string | number
+  ) => {
+    // state update
+  }}
+/>
 ```
 
 **Optionals Props**
 
+### `completedAtBottom?: boolean`
+
+Show completed tasks at the bottom of the list
+
 ```javascript
-{
-  completedAtBottom: boolean,
-  counterPosition: oneOf('top', 'bottom', 'both'),
-  id: oneOfType(boolean, string),
-  *onChange: func,
-  onCreate: func,
-  onDelete: oneOfType(boolean, func),
-  onToggleAll: (boolean, func),
-  order: oneOf(false, 'desc', 'asc'),
-  orderBy: oneOf('label', 'id', 'mtime', 'ctime'),
-  showCompleted: boolean,
-  showCounter: boolean,
-  showProgress: boolean,
-  *tasks: arrayOf(shape({ checked:boolean, id:string, label:string })),
-  title: oneOf(string, boolean),
-}
+<NapprTodoList completedAtBottom={true} />
+```
+
+### `counterPosition?: string`
+
+Show completed tasks at the bottom of the list
+Possible values: `top`, `bottom`, `both`
+
+```javascript
+<NapprTodoList counterPosition={'bottom'} />
+```
+
+### `id?: string|number`
+
+An identifier for the tasks list, this value will be returned as last arguments of each callback methods `onChange`, `onCreate`, `onToggleAll`, `onDelete`
+
+```javascript
+<NapprTodoList id={uuidv1()} />
+```
+
+### `onCreate?: func`
+
+Callback function showing a triggering button to add tasks to the list
+
+```javascript
+<NapprTodoList
+  onCreate={(listId?: string | number) => {
+    // state update
+  }}
+/>
+```
+
+### `onDelete?: func`
+
+Callback function showing a triggering button to remove tasks from the list
+
+```javascript
+<NapprTodoList
+  onDelete={(taskId?: string | number) => {
+    // state update
+  }}
+/>
+```
+
+### `onToggleAll?: func`
+
+Callback function showing a triggering button to check/uncheck all tasks at once
+
+```javascript
+<NapprTodoList
+  onToggleAll={(checkedValue*: bool, taskId?: string|number) => {
+    // state update
+  }}
+/>
+```
+
+### `order?: bool|string`
+
+Ordering the list descending or ascending, possible values: `false`, `desc`, `asc`
+
+```javascript
+<NapprTodoList order={false} />
+```
+
+### `orderBy?: bool|string`
+
+Ordering key for the list, possible values: `label`, `id`
+
+```javascript
+<NapprTodoList orderBy={'label'} />
+```
+
+### `showCompleted?: bool`
+
+Show/Hide completed tasks in the list
+
+```javascript
+<NapprTodoList showCompleted={true} />
+```
+
+### `showCounter?: bool`
+
+Show/Hide a counter of completed/total tasks of the list
+
+```javascript
+<NapprTodoList showCounter={false} />
+```
+
+### `showProgress?: bool`
+
+Show/Hide a progress bar for completed/total tasks of the list
+
+```javascript
+<NapprTodoList showProgress={false} />
+```
+
+### `title?: bool|string`
+
+Title of the list
+
+```javascript
+<NapprTodoList title={false} />
 ```
 
 ## Theming

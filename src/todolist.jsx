@@ -121,7 +121,7 @@ NapprTodoListComponent.defaultProps = {
   onToggleAll: false,
   order: false,
   orderBy: 'label',
-  showCompleted: false,
+  showCompleted: true,
   showCounter: false,
   showProgress: false,
   tasks: [],
