@@ -5,10 +5,10 @@
   "author": "sixertoy <sixertoy.github@gmail.com>",
   "license": "ISC",
   "private": false,
-  "main": "./dist/index.js",
-  "module": "./dist/index.es.js",
+  "main": "lib/index.js",
+  "module": "lib/index.es.js",
   "files": [
-    "dist"
+    "lib"
   ],
   "homepage": "https://github.com/sixertoy/nappr-todolist",
   "repository": {
@@ -89,16 +89,18 @@
     "react-dom": "^16.12.0",
     "react-jss": "^10.0.4"
   },
+  "dependencies": {},
   "scripts": {
+    "test": "jest",
     "cleanup": "rm -rf node_modules && rm yarn.lock",
-    "lint:js": "eslint ./src/**/*.{js,jsx} -c ./.eslintrc.json",
-    "lint:css": "stylelint ./src/**/*.css",
+    "lint:js": "eslint src/**/*.{js,jsx} -c .eslintrc.json",
+    "lint:css": "stylelint src/**/*.css",
     "lint": "npm run lint:js && npm run lint:css",
-    "docs": "docsify serve ./docs --port=2999 --no-open",
-    "prebuild": "rm -rf dist",
+    "docs": "docsify serve docs --port=2999 --no-open",
+    "prebuild": "rm -rf lib",
     "build": "NODE_ENV=production BABEL_ENV=production rollup -c",
     "predev": "npm run lint",
-    "dev": "NODE_ENV=production BABEL_ENV=production rollup -c -w",
+    "dev": "NODE_ENV=development BABEL_ENV=development rollup -c -w",
     "prepare": "npm run build"
   }
 }

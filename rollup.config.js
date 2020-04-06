@@ -27,7 +27,10 @@ const output = [
 ];
 
 export default {
-  external: [...Object.keys(devDependencies), ...Object.keys(peerDependencies)],
+  external: [
+    ...Object.keys(devDependencies || {}),
+    ...Object.keys(peerDependencies || {}),
+  ],
   input: 'src/index.jsx',
   output,
   plugins: [
