@@ -1,4 +1,8 @@
-# NAPPR TODOLIST
+# 🍰 NAPPR TodoList
+
+[![NPM version][npm-version-img]][npm-url] [![Build][travis-img]][travis-url]
+
+[**Full Documentation**](https://sixertoy.github.io/nappr-todolist/#/)
 
 ## Install
 
@@ -6,75 +10,58 @@
 yarn add @nappr/nappr-todolist
 ```
 
-## Dependencies
+#### Required Dependencies
 
-- [react-jss](https://www.npmjs.com/package/react-jss)
-- [classnames](https://www.npmjs.com/package/classnames)
+- [react-jss^10.0.4](https://www.npmjs.com/package/react-jss)
 
 ## Usage
 
 ```javascript
-const onTaskChange = (tasks, updateTasks) => (id, checked) => {
-  const next = tasks.map(obj => (obj.id !== id && obj) || { ...obj, checked });
-  updateTasks(next);
-};
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { v1 as uuidv1 } from 'uuid';
+import NapprTodoList from '@nappr/nappr-todolist';
 
-const Application = ({ todos }) => {
-  const [tasks, updateTasks] = useState(todos);
+const ikea = require('ikea-name-generator');
+
+function App({ items }) {
+  const [tasks, updateTasks] = useState(items);
   return (
-    <div style={{ height: 200 }}>
-      <NapperTodoList
-        onChange={onTaskChange(tasks, updateTasks)}
-        tasks={tasks}
-        title={'This is the title of a list'}
-        showCompleted={true}
-        completedAtBottom={true}
-      />
+    <div className="app">
+      <div style={{ height: 200 }}>
+        <NapprTodoList
+          onChange={(clickedTaskId, clickedtaskCheckValue) => {
+            const next = tasks.map(obj => {
+              if (obj.id !== clickedTaskId) return obj;
+              return { ...obj, checked: clickedtaskCheckValue };
+            });
+            updateTasks(next);
+          }}
+          tasks={tasks}
+        />
+      </div>
     </div>
   );
-};
-```
-
-## Required Props
-
-```javascript
-{
-  onChange: func,
 }
-```
 
-## Optionals Props
-
-```javascript
-{
-  completedAtBottom: boolean,
-  counterPosition: oneOf('top', 'bottom', 'both'),
-  id: oneOf(bool, string),
-  onDelete: oneOf(bool, func),
-  onToggleAll: oneOf(bool, func),
-  order: oneOf(false, 'desc', 'asc'),
-  orderBy: oneOf('label', 'id', 'mtime', 'ctime'),
-  showCompleted: bool,
-  showCounter: bool,
-  showProgress: bool,
-  tasks: {
-    checked: bool*,
-    id: oneOf(string, bool)*,
-    label: string*
-  },
-  title: oneOf(string, bool),
-}
-```
-
-## Theming
-
-```javascript
-{
-  backgroundHover: 'rgba(0, 0, 0, 0.15)',
-  color: '#000000',
-  progressRadius: 2,
-  progressSize: 5,
-  taskRadius: 4,
-  titleFontSize: 20,
+App.defaultProps = {
+  items: [...Array(10).keys()].map(() => ({
+    checked: false,
+    id: uuidv1(),
+    label: ikea.getName(),
+  })),
 };
+
+App.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape()),
+};
+
+export default App;
 ```
+
+[![Edit nappr-todolist-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/nappr-todolist-example-ie5fj?fontsize=14&hidenavigation=1&theme=dark)
+
+[travis-url]: https://travis-ci.org/sixertoy/nappr-todolist
+[travis-img]: http://img.shields.io/travis/sixertoy/nappr-todolist.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/@nappr/nappr-todolist
+[npm-version-img]: http://img.shields.io/npm/v/@nappr/nappr-todolist.svg?style=flat-square
