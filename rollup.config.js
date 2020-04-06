@@ -48,12 +48,12 @@ const output = [
   {
     file: main,
     format: 'cjs',
-    sourcemap: !isProduction,
+    sourcemap: true,
   },
   {
     file: module,
     format: 'es',
-    sourcemap: !isProduction,
+    sourcemap: true,
   },
 ];
 

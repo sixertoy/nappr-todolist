@@ -39,7 +39,7 @@ const NapprTodoListTasksComponent = ({ onChange, onDelete, render, tasks }) => {
 };
 
 NapprTodoListTasksComponent.defaultProps = {
-  render: React.memo((obj, onChange, onDelete) => {
+  render: (obj, onChange, onDelete) => {
     return (
       <NapprTodoListTaskComponent
         key={obj.id}
@@ -50,7 +50,7 @@ NapprTodoListTasksComponent.defaultProps = {
         onDelete={onDelete}
       />
     );
-  }),
+  },
 };
 
 NapprTodoListTasksComponent.propTypes = {
