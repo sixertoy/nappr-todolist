@@ -91,13 +91,15 @@ const NapprTodoListComponent = React.memo(
           {onToggleAll && (
             <NapprTodoListCheckerComponent
               allChecked={allChecked}
-              onChange={onToggleAll}
+              checkAllHandler={onToggleAll}
+              parentId={id}
             />
           )}
           <NapprTodoListTasksComponent
             tasks={filtered}
-            onChange={onChange}
-            onDelete={onDelete}
+            changeHandler={onChange}
+            deleteHandler={onDelete}
+            parentId={id}
           />
           <NapprTodoListFooterComponent
             showCounter={counterOnBottom}

@@ -54,13 +54,13 @@ const NapprTodoListTaskComponent = ({
   checked,
   id,
   label,
-  onChange,
-  onDelete,
+  onChangeHandler,
+  onDeleteHandler,
 }) => {
   const theme = useTheme();
   const classes = useStyles({ theme });
   const [isHover, setIsHover] = useState(false);
-  const canDelete = isHover && onDelete;
+  const canDelete = isHover && onDeleteHandler;
   return (
     <div
       className={`${BASE_CLASS} ${classes.task}`}
@@ -70,7 +70,7 @@ const NapprTodoListTaskComponent = ({
       <button
         className={`${BASE_CLASS}-btn ${classes.btn}`}
         type="button"
-        onClick={() => onChange(id, !checked)}>
+        onClick={() => onChangeHandler(id, !checked)}>
         <div className={`${BASE_CLASS}-ckb ${classes.ckb}`}>
           {checked && Icons.Checked}
           {!checked && Icons.Unchecked}
@@ -83,7 +83,7 @@ const NapprTodoListTaskComponent = ({
         <button
           className={`${BASE_CLASS}-dlt ${classes.dlt}`}
           type="button"
-          onClick={() => onDelete(id)}>
+          onClick={() => onDeleteHandler(id)}>
           <NapprTodoListIconTrash />
         </button>
       )}
@@ -103,8 +103,9 @@ NapprTodoListTaskComponent.propTypes = {
   checked: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  onDelete: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]).isRequired,
+  onChangeHandler: PropTypes.func.isRequired,
+  onDeleteHandler: PropTypes.oneOfType([PropTypes.bool, PropTypes.func])
+    .isRequired,
 };
 
 export default NapprTodoListTaskComponent;

@@ -27,35 +27,47 @@ const useStyles = createUseStyles({
   },
 });
 
-const NapprTodoListTasksComponent = ({ onChange, onDelete, render, tasks }) => {
+const NapprTodoListTasksComponent = ({
+  changeHandler,
+  deleteHandler,
+  parentId,
+  render,
+  tasks,
+}) => {
   const classes = useStyles();
   return (
     <div className={`${BASE_CLASS} ${classes.container}`}>
       <div className={`${BASE_CLASS}-wrp ${classes.wrp}`}>
-        {tasks.map(obj => render(obj, onChange, onDelete))}
+        {tasks.map(obj => render(obj, changeHandler, deleteHandler, parentId))}
       </div>
     </div>
   );
 };
 
 NapprTodoListTasksComponent.defaultProps = {
-  render: (obj, onChange, onDelete) => {
+  render: (obj, changeHandler, deleteHandler, parentId) => {
     return (
       <NapprTodoListTaskComponent
         key={obj.id}
         checked={obj.checked}
         id={obj.id}
         label={obj.label}
-        onChange={onChange}
-        onDelete={onDelete}
+        onChangeHandler={(...rest) => changeHandler(...rest, parentId)}
+        onDeleteHandler={(...rest) => deleteHandler(...rest, parentId)}
       />
     );
   },
 };
 
+NapprTodoListTasksComponent.defaultProps = {
+  parentId: null,
+};
+
 NapprTodoListTasksComponent.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  onDelete: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]).isRequired,
+  changeHandler: PropTypes.func.isRequired,
+  deleteHandler: PropTypes.oneOfType([PropTypes.bool, PropTypes.func])
+    .isRequired,
+  parentId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   render: PropTypes.func,
   tasks: TasksType.isRequired,
 };

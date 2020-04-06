@@ -20,7 +20,11 @@ const useStyles = createUseStyles({
   lbl: {},
 });
 
-const NapprTodoListCheckerComponent = ({ allChecked, onChange }) => {
+const NapprTodoListCheckerComponent = ({
+  allChecked,
+  checkAllHandler,
+  parentId,
+}) => {
   const theme = useTheme();
   const classes = useStyles({ theme });
   const [checked, setChecked] = useState(false);
@@ -36,7 +40,7 @@ const NapprTodoListCheckerComponent = ({ allChecked, onChange }) => {
         onClick={() => {
           const next = !checked;
           setChecked(next);
-          onChange(next);
+          checkAllHandler(next, parentId);
         }}>
         <div className={`${BASE_CLASS}-lbl ${classes.lbl}`}>
           {!checked && <span>Check all</span>}
@@ -47,9 +51,14 @@ const NapprTodoListCheckerComponent = ({ allChecked, onChange }) => {
   );
 };
 
+NapprTodoListCheckerComponent.defaultProps = {
+  parentId: null,
+};
+
 NapprTodoListCheckerComponent.propTypes = {
   allChecked: PropTypes.bool.isRequired,
-  onChange: PropTypes.func.isRequired,
+  checkAllHandler: PropTypes.func.isRequired,
+  parentId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default NapprTodoListCheckerComponent;
