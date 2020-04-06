@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NapperTodoListIconUnchecked = React.memo(() => (
+const NapprTodoListIconUnchecked = React.memo(() => (
   <svg
     fill="currentColor"
     height="1em"
@@ -13,4 +13,4 @@ const NapperTodoListIconUnchecked = React.memo(() => (
   </svg>
 ));
 
-export default NapperTodoListIconUnchecked;
+export default NapprTodoListIconUnchecked;

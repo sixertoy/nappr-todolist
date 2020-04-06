@@ -18,7 +18,7 @@ const useStyles = createUseStyles({
   ttl: {},
 });
 
-const NapperTodoListCounterComponent = React.memo(({ tasks }) => {
+const NapprTodoListCounterComponent = React.memo(({ tasks }) => {
   const theme = useTheme();
   const classes = useStyles({ theme });
   const total = (tasks && tasks.length) || 0;
@@ -32,8 +32,8 @@ const NapperTodoListCounterComponent = React.memo(({ tasks }) => {
   );
 });
 
-NapperTodoListCounterComponent.propTypes = {
+NapprTodoListCounterComponent.propTypes = {
   tasks: TasksType.isRequired,
 };
 
-export default NapperTodoListCounterComponent;
+export default NapprTodoListCounterComponent;

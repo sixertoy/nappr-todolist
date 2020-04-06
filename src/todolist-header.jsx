@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 
-import { NapperTodoListIconPlus } from './assets';
+import { NapprTodoListIconPlus } from './assets';
 import { CLASS_NAME_PREFIX } from './core/constants';
 import { TasksType, TitleType } from './prop-types';
-import NapperTodoListCounterComponent from './todolist-counter';
-import NapperTodoListProgressComponent from './todolist-progress';
+import NapprTodoListCounterComponent from './todolist-counter';
+import NapprTodoListProgressComponent from './todolist-progress';
 
 const BASE_CLASS = `${CLASS_NAME_PREFIX}-header`;
 
@@ -31,7 +31,7 @@ const useStyles = createUseStyles({
   },
 });
 
-const NapperTodoListHeaderComponent = React.memo(
+const NapprTodoListHeaderComponent = React.memo(
   ({ createHandler, parentId, showCounter, showProgress, tasks, title }) => {
     const theme = useTheme();
     const classes = useStyles({ theme });
@@ -40,17 +40,17 @@ const NapperTodoListHeaderComponent = React.memo(
         <div className={`${BASE_CLASS}-wrp ${classes.wrp}`}>
           {createHandler && (
             <button type="button" onClick={() => createHandler(parentId)}>
-              <NapperTodoListIconPlus />
+              <NapprTodoListIconPlus />
             </button>
           )}
           {title && (
             <span className={`${BASE_CLASS}-tit ${classes.tit}`}>{title}</span>
           )}
-          {showCounter && <NapperTodoListCounterComponent tasks={tasks} />}
+          {showCounter && <NapprTodoListCounterComponent tasks={tasks} />}
         </div>
         {showProgress && (
           <div className={`${BASE_CLASS}-btm ${classes.btm}`}>
-            <NapperTodoListProgressComponent tasks={tasks} />
+            <NapprTodoListProgressComponent tasks={tasks} />
           </div>
         )}
       </div>
@@ -58,12 +58,12 @@ const NapperTodoListHeaderComponent = React.memo(
   }
 );
 
-NapperTodoListHeaderComponent.defaultProps = {
+NapprTodoListHeaderComponent.defaultProps = {
   createHandler: null,
   parentId: null,
 };
 
-NapperTodoListHeaderComponent.propTypes = {
+NapprTodoListHeaderComponent.propTypes = {
   createHandler: PropTypes.func,
   parentId: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   showCounter: PropTypes.bool.isRequired,
@@ -72,4 +72,4 @@ NapperTodoListHeaderComponent.propTypes = {
   title: TitleType.isRequired,
 };
 
-export default NapperTodoListHeaderComponent;
+export default NapprTodoListHeaderComponent;

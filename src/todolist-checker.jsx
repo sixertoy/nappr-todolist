@@ -20,7 +20,7 @@ const useStyles = createUseStyles({
   lbl: {},
 });
 
-const NapperTodoListCheckerComponent = ({ allChecked, onChange }) => {
+const NapprTodoListCheckerComponent = ({ allChecked, onChange }) => {
   const theme = useTheme();
   const classes = useStyles({ theme });
   const [checked, setChecked] = useState(false);
@@ -47,9 +47,9 @@ const NapperTodoListCheckerComponent = ({ allChecked, onChange }) => {
   );
 };
 
-NapperTodoListCheckerComponent.propTypes = {
+NapprTodoListCheckerComponent.propTypes = {
   allChecked: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
-export default NapperTodoListCheckerComponent;
+export default NapprTodoListCheckerComponent;

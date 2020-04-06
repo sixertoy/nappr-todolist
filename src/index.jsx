@@ -6,11 +6,11 @@ import { jss, JssProvider, ThemeProvider } from 'react-jss';
 
 import { BASE_THEME, CLASS_NAME_PREFIX } from './core/constants';
 import { ThemeType } from './prop-types';
-import NapperTodoListComponent from './todolist';
+import NapprTodoListComponent from './todolist';
 
 const JSS_CLASSNAME_PREFIX = `${CLASS_NAME_PREFIX}-`;
 
-const NapperTodoList = props => {
+const NapprTodoList = props => {
   const { jssMinifyId, theme, ...rest } = props;
   const mergedTheme = { ...BASE_THEME, ...theme };
   return (
@@ -20,20 +20,20 @@ const NapperTodoList = props => {
       jss={jss}>
       <ThemeProvider theme={mergedTheme}>
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        <NapperTodoListComponent {...rest} />
+        <NapprTodoListComponent {...rest} />
       </ThemeProvider>
     </JssProvider>
   );
 };
 
-NapperTodoList.defaultProps = {
+NapprTodoList.defaultProps = {
   jssMinifyId: true,
   theme: {},
 };
 
-NapperTodoList.propTypes = {
+NapprTodoList.propTypes = {
   jssMinifyId: PropTypes.bool,
   theme: ThemeType,
 };
 
-export default NapperTodoList;
+export default NapprTodoList;

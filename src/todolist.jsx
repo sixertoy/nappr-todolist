@@ -15,10 +15,10 @@ import {
   showTopProgress,
 } from './core/utils';
 import { PlacementType, TasksType, TitleType } from './prop-types';
-import NapperTodoListCheckerComponent from './todolist-checker';
-import NapperTodoListFooterComponent from './todolist-footer';
-import NapperTodoListHeaderComponent from './todolist-header';
-import NapperTodoListTasksComponent from './todolist-tasks';
+import NapprTodoListCheckerComponent from './todolist-checker';
+import NapprTodoListFooterComponent from './todolist-footer';
+import NapprTodoListHeaderComponent from './todolist-header';
+import NapprTodoListTasksComponent from './todolist-tasks';
 
 const BASE_CLASS = `${CLASS_NAME_PREFIX}-container`;
 
@@ -44,7 +44,7 @@ const useStyles = createUseStyles({
   },
 });
 
-const NapperTodoListComponent = React.memo(
+const NapprTodoListComponent = React.memo(
   ({
     completedAtBottom,
     counterPosition,
@@ -80,7 +80,7 @@ const NapperTodoListComponent = React.memo(
         {...containerProps}
         className={`${BASE_CLASS} ${classes.container}`}>
         <div className={`${BASE_CLASS}-wrp ${classes.wrp}`}>
-          <NapperTodoListHeaderComponent
+          <NapprTodoListHeaderComponent
             parentId={id}
             showCounter={counterOnTop}
             createHandler={onCreate}
@@ -89,17 +89,17 @@ const NapperTodoListComponent = React.memo(
             title={title}
           />
           {onToggleAll && (
-            <NapperTodoListCheckerComponent
+            <NapprTodoListCheckerComponent
               allChecked={allChecked}
               onChange={onToggleAll}
             />
           )}
-          <NapperTodoListTasksComponent
+          <NapprTodoListTasksComponent
             tasks={filtered}
             onChange={onChange}
             onDelete={onDelete}
           />
-          <NapperTodoListFooterComponent
+          <NapprTodoListFooterComponent
             showCounter={counterOnBottom}
             showProgress={progressOnBottom}
             tasks={tasks}
@@ -110,7 +110,7 @@ const NapperTodoListComponent = React.memo(
   }
 );
 
-NapperTodoListComponent.defaultProps = {
+NapprTodoListComponent.defaultProps = {
   completedAtBottom: true,
   counterPosition: 'bottom',
   id: null,
@@ -126,7 +126,7 @@ NapperTodoListComponent.defaultProps = {
   title: false,
 };
 
-NapperTodoListComponent.propTypes = {
+NapprTodoListComponent.propTypes = {
   completedAtBottom: PropTypes.bool,
   counterPosition: PlacementType,
   id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -143,4 +143,4 @@ NapperTodoListComponent.propTypes = {
   title: TitleType,
 };
 
-export default NapperTodoListComponent;
+export default NapprTodoListComponent;

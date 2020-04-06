@@ -4,8 +4,8 @@ import { createUseStyles } from 'react-jss';
 
 import { CLASS_NAME_PREFIX } from './core/constants';
 import { TasksType } from './prop-types';
-import NapperTodoListCounterComponent from './todolist-counter';
-import NapperTodoListProgressComponent from './todolist-progress';
+import NapprTodoListCounterComponent from './todolist-counter';
+import NapprTodoListProgressComponent from './todolist-progress';
 
 const BASE_CLASS = `${CLASS_NAME_PREFIX}-footer`;
 
@@ -24,24 +24,24 @@ const useStyles = createUseStyles({
   },
 });
 
-const NapperTodoListFooterComponent = React.memo(
+const NapprTodoListFooterComponent = React.memo(
   ({ showCounter, showProgress, tasks }) => {
     const classes = useStyles();
     return (
       <div className={`${BASE_CLASS} ${classes.container}`}>
         <div className={`${BASE_CLASS}-wrp ${classes.wrp}`}>
-          {showProgress && <NapperTodoListProgressComponent tasks={tasks} />}
-          {showCounter && <NapperTodoListCounterComponent tasks={tasks} />}
+          {showProgress && <NapprTodoListProgressComponent tasks={tasks} />}
+          {showCounter && <NapprTodoListCounterComponent tasks={tasks} />}
         </div>
       </div>
     );
   }
 );
 
-NapperTodoListFooterComponent.propTypes = {
+NapprTodoListFooterComponent.propTypes = {
   showCounter: PropTypes.bool.isRequired,
   showProgress: PropTypes.bool.isRequired,
   tasks: TasksType.isRequired,
 };
 
-export default NapperTodoListFooterComponent;
+export default NapprTodoListFooterComponent;

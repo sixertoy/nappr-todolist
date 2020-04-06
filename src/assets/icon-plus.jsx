@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NapperTodoListIconPlus = React.memo(() => (
+const NapprTodoListIconPlus = React.memo(() => (
   <svg
     stroke="currentColor"
     fill="currentColor"
@@ -13,4 +13,4 @@ const NapperTodoListIconPlus = React.memo(() => (
   </svg>
 ));
 
-export default NapperTodoListIconPlus;
+export default NapprTodoListIconPlus;

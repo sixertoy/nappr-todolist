@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NapperTodoListIconChecked = React.memo(() => (
+const NapprTodoListIconChecked = React.memo(() => (
   <svg
     fill="currentColor"
     height="1em"
@@ -13,4 +13,4 @@ const NapperTodoListIconChecked = React.memo(() => (
   </svg>
 ));
 
-export default NapperTodoListIconChecked;
+export default NapprTodoListIconChecked;

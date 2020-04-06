@@ -4,7 +4,7 @@ import { createUseStyles } from 'react-jss';
 
 import { CLASS_NAME_PREFIX } from './core/constants';
 import { TasksType } from './prop-types';
-import NapperTodoListTaskComponent from './todolist-task';
+import NapprTodoListTaskComponent from './todolist-task';
 
 const BASE_CLASS = `${CLASS_NAME_PREFIX}-tasks`;
 
@@ -27,12 +27,7 @@ const useStyles = createUseStyles({
   },
 });
 
-const NapperTodoListTasksComponent = ({
-  onChange,
-  onDelete,
-  render,
-  tasks,
-}) => {
+const NapprTodoListTasksComponent = ({ onChange, onDelete, render, tasks }) => {
   const classes = useStyles();
   return (
     <div className={`${BASE_CLASS} ${classes.container}`}>
@@ -43,10 +38,10 @@ const NapperTodoListTasksComponent = ({
   );
 };
 
-NapperTodoListTasksComponent.defaultProps = {
+NapprTodoListTasksComponent.defaultProps = {
   render: React.memo((obj, onChange, onDelete) => {
     return (
-      <NapperTodoListTaskComponent
+      <NapprTodoListTaskComponent
         key={obj.id}
         checked={obj.checked}
         id={obj.id}
@@ -58,11 +53,11 @@ NapperTodoListTasksComponent.defaultProps = {
   }),
 };
 
-NapperTodoListTasksComponent.propTypes = {
+NapprTodoListTasksComponent.propTypes = {
   onChange: PropTypes.func.isRequired,
   onDelete: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]).isRequired,
   render: PropTypes.func,
   tasks: TasksType.isRequired,
 };
 
-export default NapperTodoListTasksComponent;
+export default NapprTodoListTasksComponent;

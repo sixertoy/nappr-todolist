@@ -41,7 +41,7 @@ const useStyles = createUseStyles({
   },
 });
 
-const NapperTodoListProgressComponent = React.memo(({ tasks }) => {
+const NapprTodoListProgressComponent = React.memo(({ tasks }) => {
   const theme = useTheme();
   const classes = useStyles({ theme });
   const total = (tasks && tasks.length) || 0;
@@ -64,10 +64,10 @@ const NapperTodoListProgressComponent = React.memo(({ tasks }) => {
   );
 });
 
-NapperTodoListProgressComponent.defaultProps = {};
+NapprTodoListProgressComponent.defaultProps = {};
 
-NapperTodoListProgressComponent.propTypes = {
+NapprTodoListProgressComponent.propTypes = {
   tasks: TasksType.isRequired,
 };
 
-export default NapperTodoListProgressComponent;
+export default NapprTodoListProgressComponent;

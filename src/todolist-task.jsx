@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import { createUseStyles, useTheme } from 'react-jss';
 
 import {
-  NapperTodoListIconChecked,
-  NapperTodoListIconTrash,
-  NapperTodoListIconUnchecked,
+  NapprTodoListIconChecked,
+  NapprTodoListIconTrash,
+  NapprTodoListIconUnchecked,
 } from './assets';
 import { CLASS_NAME_PREFIX } from './core/constants';
 import { IconType } from './prop-types';
@@ -49,7 +49,7 @@ const useStyles = createUseStyles({
   }),
 });
 
-const NapperTodoListTaskComponent = ({
+const NapprTodoListTaskComponent = ({
   Icons,
   checked,
   id,
@@ -64,7 +64,7 @@ const NapperTodoListTaskComponent = ({
   return (
     <div
       className={`${BASE_CLASS} ${classes.task}`}
-      data-id={`napper-todolist-task-${id}`}
+      data-id={`nappr-todolist-task-${id}`}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}>
       <button
@@ -84,21 +84,21 @@ const NapperTodoListTaskComponent = ({
           className={`${BASE_CLASS}-dlt ${classes.dlt}`}
           type="button"
           onClick={() => onDelete(id)}>
-          <NapperTodoListIconTrash />
+          <NapprTodoListIconTrash />
         </button>
       )}
     </div>
   );
 };
 
-NapperTodoListTaskComponent.defaultProps = {
+NapprTodoListTaskComponent.defaultProps = {
   Icons: {
-    Checked: <NapperTodoListIconChecked />,
-    Unchecked: <NapperTodoListIconUnchecked />,
+    Checked: <NapprTodoListIconChecked />,
+    Unchecked: <NapprTodoListIconUnchecked />,
   },
 };
 
-NapperTodoListTaskComponent.propTypes = {
+NapprTodoListTaskComponent.propTypes = {
   Icons: IconType,
   checked: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
@@ -107,4 +107,4 @@ NapperTodoListTaskComponent.propTypes = {
   onDelete: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]).isRequired,
 };
 
-export default NapperTodoListTaskComponent;
+export default NapprTodoListTaskComponent;
