@@ -2,6 +2,7 @@
   "extends": ["airbnb", "prettier", "prettier/react"],
   "plugins": [
     "prettier",
+    "jest",
     "simple-import-sort",
     "import",
     "sort-destructure-keys",
@@ -10,7 +11,8 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "jest/globals": true
   },
   "rules": {
     "import/no-unresolved": [

@@ -9,6 +9,7 @@ import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
 import { terser } from 'rollup-plugin-terser';
 
 import {
+  browser,
   devDependencies,
   main,
   module,
@@ -18,6 +19,12 @@ import {
 require('dotenv').config();
 
 const isProduction = process.env.NODE_ENV === 'production';
+
+const globals = {
+  react: 'React',
+  'react-dom': 'ReactDom',
+  'react-jss': 'ReactJSS',
+};
 
 const external = [
   builtins,
@@ -44,22 +51,31 @@ const plugins = [
   terser(),
 ];
 
-const output = [
-  {
-    file: main,
-    format: 'cjs',
-    sourcemap: true,
-  },
-  {
-    file: module,
-    format: 'es',
-    sourcemap: true,
-  },
-];
-
 export default {
   external,
   input: 'src/index.jsx',
-  output,
+  output: [
+    {
+      file: main,
+      format: 'cjs',
+      globals,
+      name: 'nappr-todolist',
+      sourcemap: true,
+    },
+    {
+      file: browser,
+      format: 'umd',
+      globals,
+      name: 'nappr-todolist',
+      sourcemap: true,
+    },
+    {
+      file: module,
+      format: 'es',
+      globals,
+      name: 'nappr-todolist',
+      sourcemap: true,
+    },
+  ],
   plugins,
 };
