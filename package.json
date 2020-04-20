@@ -12,7 +12,7 @@
     "lib",
     "docs"
   ],
-  "homepage": "https://github.com/sixertoy/nappr-todolist",
+  "homepage": "https://sixertoy.github.io/nappr-todolist",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sixertoy/nappr-todolist.git"
@@ -99,7 +99,6 @@
     "react-dom": "^16.12.0"
   },
   "dependencies": {
-    "@nappr/nappr-todolist": "^0.1.28",
     "react-jss": "^10.0.4"
   },
   "scripts": {

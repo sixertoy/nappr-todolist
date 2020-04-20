@@ -11,4 +11,8 @@
 .jest.config.js
 .rollup.config.js
 src/
+coverage/
 .scripts/
+_old/
+tmp/
+temp/

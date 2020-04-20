@@ -27,6 +27,19 @@ const useStyles = createUseStyles({
   },
 });
 
+function defaultItemsRenderer(obj, changeHandler, deleteHandler, parentId) {
+  return (
+    <NapprTodoListTaskComponent
+      key={obj.id}
+      checked={obj.checked}
+      id={obj.id}
+      label={obj.label}
+      onChangeHandler={(...rest) => changeHandler(...rest, parentId)}
+      onDeleteHandler={(...rest) => deleteHandler(...rest, parentId)}
+    />
+  );
+}
+
 const NapprTodoListTasksComponent = ({
   changeHandler,
   deleteHandler,
@@ -38,29 +51,18 @@ const NapprTodoListTasksComponent = ({
   return (
     <div className={`${BASE_CLASS} ${classes.container}`}>
       <div className={`${BASE_CLASS}-wrp ${classes.wrp}`}>
-        {tasks.map(obj => render(obj, changeHandler, deleteHandler, parentId))}
+        {tasks.map(obj => {
+          const renderer = render || defaultItemsRenderer;
+          return renderer(obj, changeHandler, deleteHandler, parentId);
+        })}
       </div>
     </div>
   );
 };
 
 NapprTodoListTasksComponent.defaultProps = {
-  render: (obj, changeHandler, deleteHandler, parentId) => {
-    return (
-      <NapprTodoListTaskComponent
-        key={obj.id}
-        checked={obj.checked}
-        id={obj.id}
-        label={obj.label}
-        onChangeHandler={(...rest) => changeHandler(...rest, parentId)}
-        onDeleteHandler={(...rest) => deleteHandler(...rest, parentId)}
-      />
-    );
-  },
-};
-
-NapprTodoListTasksComponent.defaultProps = {
   parentId: null,
+  render: null,
 };
 
 NapprTodoListTasksComponent.propTypes = {
