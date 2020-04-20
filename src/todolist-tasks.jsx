@@ -34,8 +34,14 @@ function defaultItemsRenderer(obj, changeHandler, deleteHandler, parentId) {
       checked={obj.checked}
       id={obj.id}
       label={obj.label}
-      onChangeHandler={(...rest) => changeHandler(...rest, parentId)}
-      onDeleteHandler={(...rest) => deleteHandler(...rest, parentId)}
+      onChangeHandler={
+        (changeHandler && ((...rest) => changeHandler(...rest, parentId))) ||
+        null
+      }
+      onDeleteHandler={
+        (deleteHandler && ((...rest) => deleteHandler(...rest, parentId))) ||
+        null
+      }
     />
   );
 }
@@ -61,14 +67,14 @@ const NapprTodoListTasksComponent = ({
 };
 
 NapprTodoListTasksComponent.defaultProps = {
+  deleteHandler: null,
   parentId: null,
   render: null,
 };
 
 NapprTodoListTasksComponent.propTypes = {
   changeHandler: PropTypes.func.isRequired,
-  deleteHandler: PropTypes.oneOfType([PropTypes.bool, PropTypes.func])
-    .isRequired,
+  deleteHandler: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   parentId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   render: PropTypes.func,
   tasks: TasksType.isRequired,
